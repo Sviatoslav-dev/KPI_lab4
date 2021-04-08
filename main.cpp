@@ -155,15 +155,16 @@ void print_marks(Student student){
 
 void print_sessionMarks(Student student){
   for (size_t i = 0; i < 3; i++) {
-    cout << student.getSession(i) << ": " << setw (10) << student.getSessionMarks(i) << endl;
+    cout << student.getSession(i) << ": " << student.getSessionMarks(i) << endl;
   }
 }
 
-bool find_tutor(string login, string password, vector <Tutor> tutors){
+bool find_tutor(string login, string password, vector <Tutor> tutors, int &ind){
   bool ok = false;
   for (size_t i = 0; i < tutors.size(); i++) {
     if (login == tutors[i].getName() && password == tutors[i].getPassword()) {
       ok = true;
+      ind = i;
     }
   }
   return ok;
@@ -178,6 +179,76 @@ int find_student(string name, vector <Student> students){
   return -1;
 }
 
+void giveGrades(Student &student){
+  string subject;
+  int mark;
+  char ch;
+
+  do {
+    for (size_t i = 0; i < 6; i++) {
+      cout << student.getSubjects(i) << ": " << student.getMarks(i) << endl;
+    }
+    cout << "Виберіть предмет, по якому хочете виставити оцінки: "; cin >> subject;
+    int ind = -1;
+    for (size_t i = 0; i < 6; i++) {
+      if (subject == student.getSubjects(i)) {
+        ind = i;
+      }
+    }
+    if (ind != -1) {
+      cout << "Напишіть оцінку: "; cin >> mark;
+      student.setMarks(mark, ind);
+    }
+    else{
+      cout << "Такого предмета немає" << endl;
+    }
+    cout << "Бажаєте продовжитит виставляти оцінки?(y, n): "; cin >> ch;
+
+  } while(ch != 'n');
+
+}
+
+void giveSessionGrades(Student &student){
+  string subject;
+  int mark;
+  char ch;
+
+  do {
+    for (size_t i = 0; i < 3; i++) {
+      cout << student.getSession(i) << ": " << student.getSessionMarks(i) << endl;
+    }
+    cout << "Виберіть предмет, по якому хочете виставити оцінки: "; cin >> subject;
+    int ind = -1;
+    for (size_t i = 0; i < 3; i++) {
+      if (subject == student.getSession(i)) {
+        ind = i;
+      }
+    }
+    if (ind != -1) {
+      cout << "Напишіть оцінку: "; cin >> mark;
+      student.setSessionMarks(mark, ind);
+    }
+    else{
+      cout << "Такого предмета немає" << endl;
+    }
+    cout << "Бажаєте продовжитит виставляти оцінки?(y, n): "; cin >> ch;
+
+  } while(ch != 'n');
+}
+
+void make_File(vector <Tutor> tutors){
+  ofstream file("Tutors.csv");
+  for (size_t i = 0; i < tutors.size(); i++) {
+    file << tutors[i].getName() << ", ";
+    if (i < tutors.size()-1) {
+      file << tutors[i].getPassword() << "," << endl;
+    }
+    else{
+      file << tutors[i].getPassword() << ",";
+    }
+  }
+}
+
 int main(){
   string decPassword = "password";
   string decLogin = "decanat";
@@ -188,7 +259,8 @@ int main(){
 
   string login, password;
   string str;
-  int ind, diya;
+  int ind, diya, index;
+  char ch;
   do {
     cout << "Введіть логін: "; cin >> login;
     cout << "Введіть пароль: "; cin >> password;
@@ -209,9 +281,11 @@ int main(){
         cout << "Введіть цифру-номер дії: "; cin >> diya;
         if (diya == 1) {
           print_marks(students[ind]);
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
         else if (diya == 2) {
           print_sessionMarks(students[ind]);
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
 
         else if (diya == 3) {
@@ -219,18 +293,20 @@ int main(){
             cout << "будь ласка, введіть новий пароль: ";
             cin >> pass;
             students[ind].setPassword(pass);
+            cout << "Пароль успішно змінено" << endl;
 
+            cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
 
         else if (diya == 4) {
           str = "exit";
         }
-      } while(diya != 4);
+      } while(diya != 4 && ch != 'y');
     }
 
 
     // функционал для преподователя
-    else if (find_tutor(login, password, tutors)) {
+    else if (find_tutor(login, password, tutors, index)) {
       do {
         string studentName;
         cout << "Що ви хочете зробити?\n 1) переглянути оцінки\n 2) переглянути результати сесії\n 3) виставити оцінки\n 4) виставити результати сесії \n 5) змінити пароль\n 6) вийти\n";
@@ -246,6 +322,7 @@ int main(){
           else{
             cout << "Такого студента не існує" << endl;
           }
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
 
 
@@ -258,30 +335,43 @@ int main(){
           else{
             cout << "Такого студента не існує" << endl;
           }
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
         if (diya == 3) {
-          /* code */
+          cout << "будь ласка, введіть ім'я студента, якому хочете виставити оцінки: "; cin >> studentName;
+          int ind = find_student(studentName, students);
+          giveGrades(students[ind]);
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
         if (diya == 4) {
-          /* code */
+          cout << "будь ласка, введіть ім'я студента, якому хочете виставити результати сесії: "; cin >> studentName;
+          int ind = find_student(studentName, students);
+          giveSessionGrades(students[ind]);
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
         if (diya == 5) {
-          /* code */
+          string newpassword;
+          cout << "Введіть новий пароль: ";
+          cin >> newpassword;
+          cout << "Пароль успішно змінено" << endl;
+          tutors[index].setPassword(newpassword);
+          cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
         if (diya == 6) {
           str = "exit";
         }
-      } while(diya != 6);
+      } while(diya != 6 && ch != 'y');
 
     }
 
 
 
     else{
-        cout << "ви ніхто!" << endl;
+        cout << "Неправильний логін або пароль" << endl;
     }
     make_file(students);
+    make_File(tutors);
 
-  } while(str != "exit");
+  } while(str != "exit" && ch != 'y');
   // print_info(students);
 }
