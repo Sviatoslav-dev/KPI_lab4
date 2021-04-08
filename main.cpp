@@ -249,6 +249,30 @@ void make_File(vector <Tutor> tutors){
   }
 }
 
+void addTutor(vector <Tutor> &tutors){
+  Tutor tutor;
+  string name, password;
+  cout << "Введіть ім'я нового викладача: "; cin >> name;
+  cout << "Введіть його новий пароль: "; cin >> password;
+  tutor.setName(name);
+  tutor.setPassword(password);
+  tutors.push_back(tutor);
+}
+
+void addStudent(vector <Student> &students){
+  Student student;
+  string name, password, group;
+  cout << "Введіть ім'я нового студента: "; cin >> name;
+  cout << "Введіть його новий пароль: "; cin >> password;
+  cout << "Введіть його групу: "; cin >> group;
+
+  student.setName(name);
+  student.setPassword(password);
+  student.setGroup(group);
+  students.push_back(student);
+}
+
+
 int main(){
   string decPassword = "password";
   string decLogin = "decanat";
@@ -266,9 +290,78 @@ int main(){
     cout << "Введіть пароль: "; cin >> password;
 
 
-
+    // функционал для деканата
     if (login == decLogin && password == decPassword) {
-      cout << "Що ви хочете зробити?\n 1) переглянути оцінки студента\n 2) " << endl;
+      do {
+        string studentName;
+        cout << "Що ви хочете зробити?\n 1) переглянути оцінки студента\n 2) переглянути результати сесії студента\n 3) зареєструвати нового користувача\n 4) перевести студента\n 5) вийти" << endl;
+        cin >> diya;
+        if (diya == 1) {
+          cout << "Введіть ім'я студента: "; cin >> studentName;
+          int ind = find_student(studentName, students);
+          print_marks(students[ind]);
+        }
+
+        else if (diya == 2) {
+          cout << "Введіть ім'я студента: "; cin >> studentName;
+          int ind = find_student(studentName, students);
+          print_sessionMarks(students[ind]);
+        }
+
+        else if (diya == 3) {
+          int who;
+          do {
+            cout << "Кого ви бажаєте додати?\n 1) викладача\n 2) студента\n";
+            cin >> who;
+            if (who == 1) {
+              addTutor(tutors);
+            }
+            else if (who == 2) {
+              addStudent(students);
+            }
+            else{
+              cout << "будь ласка, введіть або \"1\" або \"2\"" << endl;
+            }
+          } while(!(who == 1 || who == 2));
+        }
+
+        else if (diya == 4) {
+          int what;
+
+          do {
+            cout << "Що ви хочете зробити?\n 1) перевести студента на інший курс\n 2) перевести студента в іншу групу\n";
+            cin >> what;
+            if (what == 1) {
+              cout << "Введіть ім'я студента, якого хочете перевести на інший курс: "; cin >> studentName;
+              int ind = find_student(studentName, students);
+              int course;
+              cout << "Введіть номер курсу, на який хочете перевести студента: "; cin >> course;
+              if (course >= 1 && course <= 7) {
+                students[ind].setCourse(course);
+              }
+              else{
+                cout << "Такого курсу не існує" << endl;
+              }
+            }
+            else if (what == 2) {
+              cout << "Введіть ім'я студента, якого хочете перевести в іншу групу: "; cin >> studentName;
+              int ind = find_student(studentName, students);
+              string group;
+              cout << "Введіть назву групи, у яку хочете перевести студента: "; cin >> group;
+              students[ind].setGroup(group);
+            }
+            else{
+              cout << "будь ласка, введіть або \"1\" або \"2\"" << endl;
+            }
+          } while(!(what == 1 || what == 2));
+        }
+
+        else if (diya == 5) {
+          str = "exit";
+        }
+
+        cout << "Бажаєте вийти?(y, n): "; cin >> ch;
+      } while(ch != 'y');
     }
 
 

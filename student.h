@@ -16,7 +16,15 @@ private:
   int sessionMarks[3];
 
 public:
-  Student(){ }
+  Student(){
+    course = 1;
+    for (size_t i = 0; i < 6; i++) {
+      marks[i] = 0;
+    }
+    for (size_t i = 0; i < 3; i++) {
+      sessionMarks[i] = 0;
+    }
+  }
 
   void setName(string str){
     name = str;
