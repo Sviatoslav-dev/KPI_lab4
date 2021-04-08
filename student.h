@@ -9,6 +9,7 @@ private:
   string name;
   string password;
   string group;
+  int course;
   string subjects[6];
   int marks[6];
   string session[3];
@@ -41,6 +42,14 @@ public:
     return group;
   }
 
+  void setCourse(int i){
+    course = i;
+  }
+
+  int getCourse(){
+    return course;
+  }
+
   void setSubjects(string str, int i){
     subjects[i] = str;
   }
@@ -66,11 +75,11 @@ public:
   }
 
   void setSessionMarks(int mark, int i){
-    marks[i] = mark;
+    sessionMarks[i] = mark;
   }
 
   int getSessionMarks(int i){
-    return marks[i];
+    return sessionMarks[i];
   }
 
 };
