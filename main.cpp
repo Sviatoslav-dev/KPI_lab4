@@ -294,7 +294,7 @@ int main(){
     if (login == decLogin && password == decPassword) {
       do {
         string studentName;
-        cout << "Що ви хочете зробити?\n 1) переглянути оцінки студента\n 2) переглянути результати сесії студента\n 3) зареєструвати нового користувача\n 4) перевести студента\n 5) вийти" << endl;
+        cout << "Що ви хочете зробити?\n 1) переглянути оцінки студента\n 2) переглянути результати сесії студента\n 3) зареєструвати нового користувача\n 4) перевести студента\n 5) відрахувати студента\n 6) вийти" << endl;
         cin >> diya;
         if (diya == 1) {
           cout << "Введіть ім'я студента: "; cin >> studentName;
@@ -356,7 +356,18 @@ int main(){
           } while(!(what == 1 || what == 2));
         }
 
-        else if (diya == 5) {
+        if (diya == 5) {
+          cout << "Введіть ім'я студента, якого хочете відрахувати: "; cin >> studentName;
+          int ind = find_student(studentName, students);
+          if (ind > 0 && ind < students.size()) {
+            students.erase(students.begin() + ind);
+          }
+          else{
+            cout << "Такого студента не існує" << endl;
+          }
+        }
+
+        else if (diya == 6) {
           str = "exit";
         }
 
@@ -450,6 +461,7 @@ int main(){
           tutors[index].setPassword(newpassword);
           cout << "бажаєте вийти?(y, n): "; cin >> ch;
         }
+
         if (diya == 6) {
           str = "exit";
         }
