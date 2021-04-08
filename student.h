@@ -24,6 +24,15 @@ public:
     for (size_t i = 0; i < 3; i++) {
       sessionMarks[i] = 0;
     }
+    subjects[0] = "math";
+    subjects[1] = "english";
+    subjects[2] = "KPI";
+    subjects[3] = "OP";
+    subjects[4] = "ASD";
+    subjects[5] = "ukr";
+    session[0] = "OP";
+    session[1] = "AK";
+    session[2] = "math";
   }
 
   void setName(string str){
