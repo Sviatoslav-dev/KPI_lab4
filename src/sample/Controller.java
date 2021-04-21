@@ -44,6 +44,21 @@ public class Controller {
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Decanat_menu.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+            else if (user.equals("Lecturer")){
+                SignInButton.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("Lecturer.fxml"));
                 try {
                     loader.load();
@@ -55,7 +70,6 @@ public class Controller {
                 stage.setScene(new Scene(root));
                 stage.show();
             }
-
 
             else{
                 Shake SignInButtonAnim = new Shake(SignInButton);
