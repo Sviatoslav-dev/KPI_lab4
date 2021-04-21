@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class DecanatMenu {
+public class LoginUser {
 
     @FXML
     private ResourceBundle resources;
@@ -19,21 +19,20 @@ public class DecanatMenu {
     private URL location;
 
     @FXML
-    private Button Exit;
+    private Button goBack;
 
     @FXML
-    private Button Session;
+    private Button RegisterStudent;
 
     @FXML
-    private Button LoginUser;
+    private Button RegisterLecturer;
 
     @FXML
     void initialize() {
-        Exit.setOnAction(event -> {
-            Exit.getScene().getWindow().hide();
-
+        RegisterStudent.setOnAction(event -> {
+            RegisterStudent.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("sample.fxml"));
+            loader.setLocation(getClass().getResource("RegisterStudent.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -43,12 +42,13 @@ public class DecanatMenu {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+
         });
 
-        LoginUser.setOnAction(event -> {
-            LoginUser.getScene().getWindow().hide();
+        RegisterLecturer.setOnAction(event -> {
+            RegisterLecturer.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("LoginUser.fxml"));
+            loader.setLocation(getClass().getResource("RegisterLecturer.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -58,6 +58,24 @@ public class DecanatMenu {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+
         });
+
+        goBack.setOnAction(event -> {
+            goBack.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Decanat_menu.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        });
+
     }
 }
