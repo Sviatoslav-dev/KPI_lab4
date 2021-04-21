@@ -3,6 +3,8 @@ package sample;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,21 +38,28 @@ public class Controller {
     @FXML
     void initialize() {
         SignInButton.setOnAction(event -> {
-            if (Main.db.log_in(LoginField.getText(), PasswordField.getText()).equals("Decanat")) {
-                Stage stage = (Stage) SignInButton.getScene().getWindow();
-                stage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Decanat_menu.fxml"));
-                Parent root1 = null;
+            String user = (Main.db.log_in(LoginField.getText(), PasswordField.getText()));
+            System.out.println(user);
+            if (user.equals("Decanat")){
+                SignInButton.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Lecturer.fxml"));
                 try {
-                    root1 = (Parent) fxmlLoader.load();
+                    loader.load();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setTitle("Деканат");
-                stage.setScene(new Scene(root1));
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
                 stage.show();
+            }
+
+
+            else{
+                Shake SignInButtonAnim = new Shake(SignInButton);
+                SignInButtonAnim.play();
             }
         });
     }
