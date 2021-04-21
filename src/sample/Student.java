@@ -1,12 +1,13 @@
 package sample;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student {
+public class Student implements Serializable {
     String username;
     String name;
     String group;
-    ArrayList<Subject> subject;
+    ArrayList<Subject> subjects;
 
     public class Subject {
         String name;

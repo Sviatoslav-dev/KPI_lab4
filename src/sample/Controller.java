@@ -30,7 +30,7 @@ public class Controller {
     @FXML
     void initialize() {
         SignInButton.setOnAction(event -> {
-            System.out.println("ok");
+            System.out.println(Main.db.log_in(LoginField.getText(), PasswordField.getText()));
         });
     }
 }
