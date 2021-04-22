@@ -24,7 +24,7 @@ public class Main extends Application {
         db = new DataBase();
 
         for (int i = 0; i < db.accaunts.size(); i++) {
-            System.out.println(db.accaunts.get(i).username);
+            System.out.println(db.accaunts.get(i).username + ", " + db.accaunts.get(i).type);
         }
         System.out.println();
 
@@ -33,9 +33,16 @@ public class Main extends Application {
             System.out.println(db.students.get(i).name);
             System.out.println(db.students.get(i).group);
             for (int j = 0; j < db.students.get(i).subjects.size(); j++) {
-                System.out.println(db.students.get(i).subjects.get(j).name);
-                System.out.println(db.students.get(i).subjects.get(1).subject_marks.get(0));
+                System.out.print(db.students.get(i).subjects.get(j).name + ", ");
+                if (db.students.get(i).subjects.get(j).subject_marks != null){
+                    for (int k = 0; k < db.students.get(i).subjects.get(j).subject_marks.size(); k++){
+                        System.out.print(db.students.get(i).subjects.get(j).subject_marks.get(k) + ", ");
+                    }
+                }
+
+                System.out.println();
             }
+            System.out.println();
         }
         System.out.println();
 
