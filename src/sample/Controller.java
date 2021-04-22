@@ -75,7 +75,7 @@ public class Controller {
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("Student.fxml"));
+                loader.setLocation(getClass().getResource("StudentMenu.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
@@ -85,6 +85,7 @@ public class Controller {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
+                System.out.println("student");
             }
 
             else{
