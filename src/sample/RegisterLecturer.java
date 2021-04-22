@@ -37,7 +37,8 @@ public class RegisterLecturer {
     @FXML
     private TextField NameField;
 
-    public static DataBase db;
+    @FXML
+    private TextField GroupsField;
 
     @FXML
     void initialize() {
@@ -46,22 +47,30 @@ public class RegisterLecturer {
             String username = LoginField.getText();
             String password = PasswordField.getText();
             String subject = SubjectField.getText();
-            ArrayList<String> groups = null;
+            ArrayList<String> groups = new ArrayList<>();
+
+            String s = GroupsField.getText();
+            int k = 0;
+
+            groups.add("");
+
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == ',') {
+                    k++;
+                    groups.add("");
+                } else {
+                    groups.set(k, groups.get(k) + s.charAt(i));
+                }
+            }
+
+            Main.db.add_lecturer(name, username, password, groups, subject);
             try {
-                db = new DataBase();
+                Main.db.save_lecturers();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            db.add_lecturer(name, username, password, groups, subject);
-            try {
-                db.save_lecturers();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
             try {
-                db.save_accaunts();
+                Main.db.save_accaunts();
             } catch (IOException e) {
                 e.printStackTrace();
             }
