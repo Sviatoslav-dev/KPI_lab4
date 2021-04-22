@@ -34,6 +34,7 @@ public class Main extends Application {
             System.out.println(db.students.get(i).group);
             for (int j = 0; j < db.students.get(i).subjects.size(); j++) {
                 System.out.println(db.students.get(i).subjects.get(j).name);
+                System.out.println(db.students.get(i).subjects.get(1).subject_marks.get(0));
             }
         }
         System.out.println();

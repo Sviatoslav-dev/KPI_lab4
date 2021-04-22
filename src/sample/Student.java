@@ -20,7 +20,8 @@ public class Student implements Serializable {
     String group;
     ArrayList<Subject> subjects;
 
-
-
+    public Student () {
+        subjects = new ArrayList<>();
+    }
 }
 

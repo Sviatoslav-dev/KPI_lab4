@@ -130,4 +130,16 @@ public class DataBase {
 
         return res;
     }
+
+    int find_student_by_name(String name) {           //Повертає номер у списку
+        int id = -1;
+
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).name.equals(name)) {
+                id = i;
+            }
+        }
+
+        return id;
+    }
 }
