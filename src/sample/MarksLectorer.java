@@ -65,11 +65,13 @@ public class MarksLectorer {
             float mar = Float.parseFloat(s);
             int id = Main.db.find_student_by_name(name.getText());
 
-            if (id != -1) {
-                if (Main.db.students.get(id).subjects.get(1).subject_marks != null) {
+            int sub_id = Main.db.subjects_id(id, Main.subject);
+
+            if (id != -1 && sub_id != -1) {
+                if (Main.db.students.get(id).subjects.get(sub_id).subject_marks != null) {
                     Main.db.add_mark(id, Main.subject, mar);
                 } else {
-                    Main.db.students.get(id).subjects.get(1).subject_marks = new ArrayList<>();
+                    Main.db.students.get(id).subjects.get(sub_id).subject_marks = new ArrayList<>();
                     Main.db.add_mark(id, Main.subject, mar);
                 }
                 try {
