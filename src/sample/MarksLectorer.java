@@ -47,7 +47,7 @@ public class MarksLectorer {
         for (int i = 0; i < Main.db.students.size(); i++) {
             m += Main.db.students.get(i).name + " - ";
             for (int j = 0; j < Main.db.students.get(i).subjects.size(); j++) {
-                if (Main.db.students.get(i).subjects.get(j).name.equals("ВМ") && Main.db.students.get(i).subjects.get(j).subject_marks != null) {
+                if (Main.db.students.get(i).subjects.get(j).name.equals(Main.subject)) {
                     for (int p = 0; p < Main.db.students.get(i).subjects.get(j).subject_marks.size(); p++) {
                         m += Main.db.students.get(i).subjects.get(j).subject_marks.get(p).toString() + ", ";
                     }
@@ -65,10 +65,10 @@ public class MarksLectorer {
 
             if (id != -1) {
                 if (Main.db.students.get(id).subjects.get(1).subject_marks != null) {
-                    Main.db.add_mark(id, "ВМ", mar);
+                    Main.db.add_mark(id, Main.subject, mar);
                 } else {
                     Main.db.students.get(id).subjects.get(1).subject_marks = new ArrayList<>();
-                    Main.db.add_mark(id, "ВМ", mar);
+                    Main.db.add_mark(id, Main.subject, mar);
                 }
                 try {
                     Main.db.save_students();

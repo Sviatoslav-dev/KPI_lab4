@@ -110,7 +110,19 @@ public class DataBase {
         int id = -1;
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).username == username) {
+            if (students.get(i).username.equals(username)) {
+                id = i;
+            }
+        }
+
+        return id;
+    }
+
+    int find_lectorer_by_username(String username) {           //Повертає номер у списку
+        int id = -1;
+
+        for (int i = 0; i < lecturers.size(); i++) {
+            if (lecturers.get(i).username.equals(username)) {
                 id = i;
             }
         }

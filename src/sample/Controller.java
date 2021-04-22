@@ -57,6 +57,9 @@ public class Controller {
                 stage.show();
             }
             else if (user.equals("Lecturer")){
+                int id = Main.db.find_lectorer_by_username(LoginField.getText());
+                Main.subject = Main.db.lecturers.get(id).subject;
+
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();

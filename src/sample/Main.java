@@ -11,6 +11,8 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static DataBase db;
+    public static String subject;
+    public static String st_username;
 
     public Main() throws IOException, ClassNotFoundException {
     }
@@ -23,8 +25,8 @@ public class Main extends Application {
         primaryStage.show();
         db = new DataBase();
 
-        for (int i = 0; i < db.accaunts.size(); i++) {
-            System.out.println(db.accaunts.get(i).username + ", " + db.accaunts.get(i).type);
+        /*for (int i = 0; i < db.accaunts.size(); i++) {
+            System.out.println(db.accaunts.get(i).username);
         }
         System.out.println();
 
@@ -49,7 +51,9 @@ public class Main extends Application {
         for (int i = 0; i < db.lecturers.size(); i++) {
             System.out.println(db.lecturers.get(i).name);
         }
-        System.out.println();
+        System.out.println();*/
+
+
     }
 
 
