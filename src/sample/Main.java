@@ -22,6 +22,26 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
         db = new DataBase();
+
+        for (int i = 0; i < db.accaunts.size(); i++) {
+            System.out.println(db.accaunts.get(i).username);
+        }
+        System.out.println();
+
+        for (int i = 0; i < db.students.size(); i++) {
+            System.out.println(db.students.get(i).username);
+            System.out.println(db.students.get(i).name);
+            System.out.println(db.students.get(i).group);
+            for (int j = 0; j < db.students.get(i).subjects.size(); j++) {
+                System.out.println(db.students.get(i).subjects.get(j).name);
+            }
+        }
+        System.out.println();
+
+        for (int i = 0; i < db.lecturers.size(); i++) {
+            System.out.println(db.lecturers.get(i).name);
+        }
+        System.out.println();
     }
 
 

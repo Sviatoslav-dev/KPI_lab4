@@ -20,56 +20,7 @@ public class Student implements Serializable {
     String group;
     ArrayList<Subject> subjects;
 
-    public class Subject {
-        String name;
-        ArrayList<Float> subject_marks;
-        float sum;
-        float session;
-        float first_dopka;
-        float second_dopka;
 
-        public void sum_marks() {
-            sum = 0;
-            for (int i = 0; i < subject_marks.size(); i++) {
-                sum += subject_marks.get(i);
-            }
-        }
-    }
-
-//    @FXML
-//    private ResourceBundle resources;
-//
-//    @FXML
-//    private URL location;
-//
-//    @FXML
-//    private Button Exit;
-//
-//    @FXML
-//    private Button Marks;
-//
-//    @FXML
-//    private Button Session;
-//
-//    @FXML
-//    void initialize() {
-//        Exit.setOnAction(event -> {
-//            Exit.getScene().getWindow().hide();
-//
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getResource("sample.fxml"));
-//            try {
-//                loader.load();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            Parent root = loader.getRoot();
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//
-//        });
-//    }
 
 }
 

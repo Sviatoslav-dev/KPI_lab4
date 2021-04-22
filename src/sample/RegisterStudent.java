@@ -38,7 +38,8 @@ public class RegisterStudent {
     @FXML
     private TextField NameField;
 
-    public static DataBase db;
+    @FXML
+    private TextField SubjectsFild;
 
     @FXML
     void initialize() {
@@ -47,31 +48,37 @@ public class RegisterStudent {
             String group = GroupField.getText();
             String username = LoginField.getText();
             String password = PasswordField.getText();
-            ArrayList<Student.Subject> subjects = null;
+            ArrayList<String> subjects = new ArrayList<>();
 
-            try {
-                db = new DataBase();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            String s = SubjectsFild.getText();
+            int k = 0;
+
+            subjects.add("");
+
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == ',') {
+                    k++;
+                    subjects.add("");
+                } else {
+                    subjects.set(k, subjects.get(k) + s.charAt(i));
+                }
             }
 
-            db.add_student(name, group, username, password, subjects);
+            Main.db.add_student(name, group, username, password, subjects);
             try {
-                db.save_students();
+                Main.db.save_students();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                db.save_accaunts();
+                Main.db.save_accaunts();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             RegisterButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("LoginUser.fxml"));
+            loader.setLocation(getClass().getResource("Register.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

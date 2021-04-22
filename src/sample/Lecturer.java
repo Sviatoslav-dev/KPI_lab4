@@ -20,73 +20,7 @@ public class Lecturer implements Serializable {
     String subject;
     ArrayList<String> groups;
 
-    @FXML
-    private ResourceBundle resources;
 
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button Marks;
-
-    @FXML
-    private Button Session;
-
-    @FXML
-    private Button Exit;
-
-    @FXML
-    void initialize() {
-        Marks.setOnAction(event -> {
-            Marks.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Marks.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        });
-
-        Session.setOnAction(event -> {
-            Session.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Session.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        });
-
-        Exit.setOnAction(event -> {
-            Exit.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("sample.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        });
-    }
 
 }
 

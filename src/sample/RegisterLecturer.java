@@ -68,7 +68,7 @@ public class RegisterLecturer {
 
             RegisterButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("LoginUser.fxml"));
+            loader.setLocation(getClass().getResource("Register.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

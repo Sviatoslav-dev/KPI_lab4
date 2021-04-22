@@ -53,7 +53,7 @@ public class DataBase {
     }
 
 
-    public void add_student (String name, String group, String username, String password, ArrayList<Student.Subject> subjects) {  //Додавання студента
+    public void add_student (String name, String group, String username, String password, ArrayList<String> subjects) {  //Додавання студента
         Account student = new Account();
         student.password = password;
         student.username = username;
@@ -61,7 +61,12 @@ public class DataBase {
 
         Student st = new Student();
         st.group = group;
-        st.subjects = subjects;
+        st.subjects = new ArrayList<>();
+        for (int i = 0; i < subjects.size(); i++) {
+            Subject sub = new Subject();
+            sub.name = subjects.get(i);
+            st.subjects.add(sub);
+        }
         st.name = name;
         st.username = username;
 
