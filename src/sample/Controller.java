@@ -37,6 +37,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+
         SignInButton.setOnAction(event -> {
             String user = (Main.db.log_in(LoginField.getText(), PasswordField.getText()));
             System.out.println(user);
