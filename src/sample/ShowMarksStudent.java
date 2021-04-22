@@ -1,10 +1,15 @@
 package sample;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class ShowMarksStudent {
 
@@ -28,23 +33,21 @@ public class ShowMarksStudent {
 
     @FXML
     void initialize() {
-        String m = "";
+        goBack.setOnAction(event -> {
+            goBack.getScene().getWindow().hide();
 
-        for (int i = 0; i < Main.db.students.size(); i++) {
-            m += Main.db.students.get(i).name + " - ";
-            for (int j = 0; j < Main.db.students.get(i).subjects.size(); j++) {
-                if (Main.db.students.get(i).subjects.get(j).name.equals(Main.subject)) {
-                    if (Main.db.students.get(i).subjects.get(j).subject_marks != null) {
-                        for (int p = 0; p < Main.db.students.get(i).subjects.get(j).subject_marks.size(); p++) {
-                            m += Main.db.students.get(i).subjects.get(j).subject_marks.get(p).toString() + ", ";
-                        }
-                    }
-                }
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("StudentMenu.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            m += "\n";
-        }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
 
-        marks.setText(m);
-
+        });
     }
 }

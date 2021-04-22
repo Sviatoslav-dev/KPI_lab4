@@ -46,11 +46,11 @@ public class StudentMenu {
 
         });
 
-        Session.setOnAction(event -> {
-            Session.getScene().getWindow().hide();
+        Marks.setOnAction(event -> {
+            Marks.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("StudentSession.fxml"));
+            loader.setLocation(getClass().getResource("Show_marks_student.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
