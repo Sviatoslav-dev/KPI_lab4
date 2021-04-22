@@ -77,6 +77,7 @@ public class Controller {
 
             else if (user.equals("Student")){
                 SignInButton.getScene().getWindow().hide();
+                Main.st_username = LoginField.getText();
 
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("StudentMenu.fxml"));

@@ -33,6 +33,27 @@ public class ShowMarksStudent {
 
     @FXML
     void initialize() {
+        String m = "";
+        int id = Main.db.find_student_by_username(Main.st_username);
+
+        if (id != -1) {
+            for (int i = 0; i < Main.db.students.get(id).subjects.size(); i++) {
+                m += Main.db.students.get(id).subjects.get(i).name + " - ";
+
+                if (Main.db.students.get(id).subjects.get(i).subject_marks != null) {
+                    for (int j = 0; j < Main.db.students.get(id).subjects.get(i).subject_marks.size(); j++) {
+                        m += Main.db.students.get(id).subjects.get(i).subject_marks.get(j) + ",";
+                    }
+                }
+
+                m += "\n";
+            }
+        } else {
+            System.out.println(id);
+        }
+
+        marks.setText(m);
+
         goBack.setOnAction(event -> {
             goBack.getScene().getWindow().hide();
 
