@@ -160,4 +160,15 @@ public class DataBase {
 
         return id;
     }
+
+    int subjects_id (int st_id, String name) {
+        int res = -1;
+
+        for (int i = 0; i < students.get(st_id).subjects.size(); i++) {
+            if (students.get(st_id).subjects.get(i).name.equals(name)) {
+                res = i;
+            }
+        }
+        return res;
+    }
 }
