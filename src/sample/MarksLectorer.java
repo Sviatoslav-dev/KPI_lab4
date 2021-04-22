@@ -89,7 +89,7 @@ public class MarksLectorer {
         Save.setOnAction(event -> {
             Save.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Marks.fxml"));
+            loader.setLocation(getClass().getResource("Lecturer.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
