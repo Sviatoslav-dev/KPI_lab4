@@ -134,8 +134,14 @@ public class DataBase {
         int res = -1;
         for (int i = 0; i < students.get(student_id).subjects.size(); i++) {
             if (students.get(student_id).subjects.get(i).name.equals(subject)) {
-                students.get(student_id).subjects.get(i).subject_marks.add(mark);
-                students.get(student_id).subjects.get(i).sum_marks();
+                if (students.get(student_id).subjects.get(i).subject_marks != null) {
+                    students.get(student_id).subjects.get(i).subject_marks.add(mark);
+                    students.get(student_id).subjects.get(i).sum_marks();
+                } else {
+                    students.get(student_id).subjects.get(i).subject_marks = new ArrayList<>();
+                    students.get(student_id).subjects.get(i).subject_marks.add(mark);
+                    students.get(student_id).subjects.get(i).sum_marks();
+                }
                 res = 0;
             }
         }

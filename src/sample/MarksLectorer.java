@@ -48,8 +48,10 @@ public class MarksLectorer {
             m += Main.db.students.get(i).name + " - ";
             for (int j = 0; j < Main.db.students.get(i).subjects.size(); j++) {
                 if (Main.db.students.get(i).subjects.get(j).name.equals(Main.subject)) {
-                    for (int p = 0; p < Main.db.students.get(i).subjects.get(j).subject_marks.size(); p++) {
-                        m += Main.db.students.get(i).subjects.get(j).subject_marks.get(p).toString() + ", ";
+                    if (Main.db.students.get(i).subjects.get(j).subject_marks != null) {
+                        for (int p = 0; p < Main.db.students.get(i).subjects.get(j).subject_marks.size(); p++) {
+                            m += Main.db.students.get(i).subjects.get(j).subject_marks.get(p).toString() + ", ";
+                        }
                     }
                 }
             }
