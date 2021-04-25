@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import animations.Shake;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,12 +85,36 @@ public class RegisterLecturer {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            try {
-                Main.db.save_accaunts();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            else{
+                Main.db.add_lecturer(name, username, password, groups, subject);
+                try {
+                    Main.db.save_lecturers();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Main.db.save_accaunts();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+                RegisterButton.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Register.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            }
+        });
+
+        goBack.setOnAction(event -> {
             RegisterButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
@@ -102,6 +127,8 @@ public class RegisterLecturer {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+
+
         });
     }
 }
