@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import animations.Shake;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,9 +42,6 @@ public class RegisterStudent {
     private TextField SubjectsFild;
 
     @FXML
-    private Button goBack;
-
-    @FXML
     void initialize() {
         RegisterButton.setOnAction(event -> {
             String name = NameField.getText();
@@ -68,39 +64,18 @@ public class RegisterStudent {
                 }
             }
 
-            if (name.equals("") || username.equals("") || password.equals("") || group.equals("")) {
-                Shake SignInButtonAnim = new Shake(RegisterButton);
-                SignInButtonAnim.play();
+            Main.db.add_student(name, group, username, password, subjects);
+            try {
+                Main.db.save_students();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else{
-                Main.db.add_student(name, group, username, password, subjects);
-                try {
-                    Main.db.save_students();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Main.db.save_accaunts();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                RegisterButton.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("Register.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+            try {
+                Main.db.save_accaunts();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
 
-        goBack.setOnAction(event -> {
             RegisterButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
@@ -113,9 +88,6 @@ public class RegisterStudent {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-
-
         });
-
     }
 }
