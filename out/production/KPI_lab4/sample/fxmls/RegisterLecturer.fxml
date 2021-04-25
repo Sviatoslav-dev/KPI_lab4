@@ -30,16 +30,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="SubjectField" layoutX="344.0" layoutY="99.0" prefHeight="35.0" prefWidth="176.0" promptText="предмет">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
       <TextField fx:id="NameField" layoutX="95.0" layoutY="99.0" prefHeight="35.0" prefWidth="176.0" promptText="ім'я">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="GroupsField" layoutX="236.0" layoutY="236.0" promptText="групи" />
+      <TextField fx:id="GroupsField" layoutX="98.0" layoutY="233.0" promptText="групи" />
+      <TextField fx:id="subjectsField" layoutX="347.0" layoutY="233.0" promptText="Предмети" />
    </children>
 </AnchorPane>

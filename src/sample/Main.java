@@ -11,15 +11,15 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static DataBase db;
-    public static String subject;
-    public static String st_username;
+    public static int lectorer_id;
+    public static int student_id;
 
     public Main() throws IOException, ClassNotFoundException {
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
@@ -50,6 +50,9 @@ public class Main extends Application {
 
         for (int i = 0; i < db.lecturers.size(); i++) {
             System.out.println(db.lecturers.get(i).name);
+            for (int j = 0; j < db.lecturers.get(i).subjects.size(); j++) {
+                System.out.println(db.lecturers.get(i).subjects.get(j));
+            }
         }
         System.out.println();
 

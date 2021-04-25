@@ -74,7 +74,7 @@ public class DataBase {
         students.add(st);
     }
 
-    public void add_lecturer (String name, String username, String password, ArrayList<String> groups, String subject) {      ////Додавання викладаче
+    public void add_lecturer (String name, String username, String password, ArrayList<String> groups, ArrayList<String> subjects) {      ////Додавання викладаче
         Account acc = new Account();
         acc.password = password;
         acc.username = username;
@@ -83,7 +83,7 @@ public class DataBase {
         Lecturer lec = new Lecturer();
         lec.groups = groups;
         lec.name = name;
-        lec.subject = subject;
+        lec.subjects = subjects;
         lec.username = username;
 
         lecturers.add(lec);
@@ -170,5 +170,17 @@ public class DataBase {
             }
         }
         return res;
+    }
+
+    ArrayList<Integer> get_students_by_group_and_subject (String group, String subject) {
+        ArrayList<Integer> students_id = new ArrayList<>();
+
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).group.equals(group) && subjects_id(i, subject) != -1) {
+                students_id.add(i);
+            }
+        }
+
+        return students_id;
     }
 }

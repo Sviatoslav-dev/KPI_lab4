@@ -32,13 +32,13 @@ public class RegisterLecturer {
     private TextField PasswordField;
 
     @FXML
-    private TextField SubjectField;
-
-    @FXML
     private TextField NameField;
 
     @FXML
     private TextField GroupsField;
+
+    @FXML
+    private TextField subjectsField;
 
     @FXML
     void initialize() {
@@ -46,8 +46,8 @@ public class RegisterLecturer {
             String name = NameField.getText();
             String username = LoginField.getText();
             String password = PasswordField.getText();
-            String subject = SubjectField.getText();
             ArrayList<String> groups = new ArrayList<>();
+            ArrayList<String> subjects = new ArrayList<>();
 
             String s = GroupsField.getText();
             int k = 0;
@@ -63,7 +63,22 @@ public class RegisterLecturer {
                 }
             }
 
-            Main.db.add_lecturer(name, username, password, groups, subject);
+            s = subjectsField.getText();
+            k = 0;
+
+            subjects.add("");
+
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == ',') {
+                    k++;
+                    subjects.add("");
+                } else {
+                    subjects.set(k, subjects.get(k) + s.charAt(i));
+                }
+            }
+
+            Main.db.add_lecturer(name, username, password, groups, subjects);
+
             try {
                 Main.db.save_lecturers();
             } catch (IOException e) {
@@ -77,7 +92,7 @@ public class RegisterLecturer {
 
             RegisterButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Register.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

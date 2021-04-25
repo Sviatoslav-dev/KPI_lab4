@@ -17,10 +17,7 @@ import javafx.stage.Stage;
 public class Lecturer implements Serializable {
     String username;
     String name;
-    String subject;
+    ArrayList<String> subjects;
     ArrayList<String> groups;
-
-
-
 }
 

@@ -36,7 +36,7 @@ public class Session {
         goBack.setOnAction(event -> {
             goBack.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Lecturer.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/Lecturer.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

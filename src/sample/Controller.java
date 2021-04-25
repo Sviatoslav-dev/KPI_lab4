@@ -45,7 +45,7 @@ public class Controller {
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("Decanat_menu.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/Decanat_menu.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
@@ -57,13 +57,12 @@ public class Controller {
                 stage.show();
             }
             else if (user.equals("Lecturer")){
-                int id = Main.db.find_lectorer_by_username(LoginField.getText());
-                Main.subject = Main.db.lecturers.get(id).subject;
+                Main.lectorer_id = Main.db.find_lectorer_by_username(LoginField.getText());
 
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("Lecturer.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/Lecturer.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
@@ -76,11 +75,11 @@ public class Controller {
             }
 
             else if (user.equals("Student")){
-                SignInButton.getScene().getWindow().hide();
-                Main.st_username = LoginField.getText();
+                Main.student_id = Main.db.find_student_by_username(LoginField.getText());
 
+                SignInButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("StudentMenu.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/StudentMenu.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {

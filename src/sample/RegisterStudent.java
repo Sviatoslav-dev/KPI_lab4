@@ -78,7 +78,7 @@ public class RegisterStudent {
 
             RegisterButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Register.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
