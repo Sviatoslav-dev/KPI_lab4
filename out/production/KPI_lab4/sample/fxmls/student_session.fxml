@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.StudentSession" prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0" style="-fx-background-color: #127808;">
+                    <children>
+                        <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
+                            <font>
+                                <Font size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <ScrollPane layoutX="-5.0" layoutY="75.0" prefHeight="250.0" prefWidth="600.0">
+                    <content>
+                        <AnchorPane fx:id="scrollPane" minHeight="100.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0" />
+                    </content>
+                </ScrollPane>
+            </children>
+        </AnchorPane>
+        <Button fx:id="goBack" layoutX="191.0" layoutY="342.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Повернутися назад">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="610.0" style="-fx-background-color: #127808;">
+            <children>
+                <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+
+</AnchorPane>

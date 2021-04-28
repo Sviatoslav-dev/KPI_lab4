@@ -59,5 +59,21 @@ public class DecanatMenu {
             stage.setScene(new Scene(root));
             stage.show();
         });
+
+        Session.setOnAction(event -> {
+            Session.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("fxmls/DecanatSession.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
     }
 }

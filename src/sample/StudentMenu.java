@@ -63,5 +63,21 @@ public class StudentMenu {
 
         });
 
+        Session.setOnAction(event -> {
+            Session.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("fxmls/student_session.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        });
     }
 }
