@@ -50,7 +50,7 @@ public class LectorerMenu {
             Session.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Session.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/lectorer_session.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

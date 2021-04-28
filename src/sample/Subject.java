@@ -19,4 +19,9 @@ public class Subject implements Serializable {
             }
         }
 
+        //Subject () {
+        //    session = -1;
+        //    first_dopka = -1;
+        //    second_dopka = -1;
+        //}
 }
