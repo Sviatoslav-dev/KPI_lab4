@@ -9,7 +9,22 @@
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <AnchorPane layoutX="-10.0" layoutY="-10.0" prefHeight="77.0" prefWidth="610.0" style="-fx-background-color: #127808;">
+            <Button fx:id="Exit" layoutX="177.0" layoutY="279.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Вийти">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="Session" layoutX="177.0" layoutY="190.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Сесія">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="register_student" layoutX="177.0" layoutY="135.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Зареєструвати">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutX="-10.0" layoutY="-10.0" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #127808;">
                <children>
                   <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
                      <font>
@@ -18,21 +33,6 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="Exit" layoutX="177.0" layoutY="279.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Вийти">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="Session" layoutX="177.0" layoutY="200.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Сесія">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="register_student" layoutX="177.0" layoutY="120.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Зареєструвати">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
    </children>

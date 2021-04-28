@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import animations.Shake;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +42,25 @@ public class RegisterLecturer {
     private TextField subjectsField;
 
     @FXML
+    private Button goBack;
+
+    @FXML
     void initialize() {
+        goBack.setOnAction(event -> {
+            goBack.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
         RegisterButton.setOnAction(event -> {
             String name = NameField.getText();
             String username = LoginField.getText();
@@ -66,42 +85,48 @@ public class RegisterLecturer {
             s = subjectsField.getText();
             k = 0;
 
-            subjects.add("");
+            if (name.equals("") || s.equals("") || username.equals("") || password.equals("")){
+                Shake regButtonAnim = new Shake(RegisterButton);
+                regButtonAnim.play();
+            }
+            else {
+                subjects.add("");
 
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == ',') {
-                    k++;
-                    subjects.add("");
-                } else {
-                    subjects.set(k, subjects.get(k) + s.charAt(i));
+                for (int i = 0; i < s.length(); i++) {
+                    if (s.charAt(i) == ',') {
+                        k++;
+                        subjects.add("");
+                    } else {
+                        subjects.set(k, subjects.get(k) + s.charAt(i));
+                    }
                 }
-            }
 
-            Main.db.add_lecturer(name, username, password, groups, subjects);
+                Main.db.add_lecturer(name, username, password, groups, subjects);
 
-            try {
-                Main.db.save_lecturers();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                Main.db.save_accaunts();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                try {
+                    Main.db.save_lecturers();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Main.db.save_accaunts();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-            RegisterButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
+                RegisterButton.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
             }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
         });
     }
 }
