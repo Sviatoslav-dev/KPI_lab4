@@ -33,7 +33,7 @@ public class LectorerMenu {
             Marks.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/marks_lectorer.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/lectorer_marks.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -66,7 +66,7 @@ public class LectorerMenu {
             Exit.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/sample.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/main_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

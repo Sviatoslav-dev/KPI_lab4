@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ShowMarksStudent {
+public class StudentMarks {
 
     @FXML
     private ResourceBundle resources;
@@ -90,7 +90,7 @@ public class ShowMarksStudent {
             goBack.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/StudentMenu.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/student_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

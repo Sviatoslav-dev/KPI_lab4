@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MarksLectorer {
+public class LectorerMarks {
     @FXML
     private ResourceBundle resources;
 
@@ -65,7 +65,7 @@ public class MarksLectorer {
         Save.setOnAction(event -> {
             Save.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Lecturer.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/lecturer_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

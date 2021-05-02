@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MarksLectorer">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LectorerMarks">
    <children>
       <Button fx:id="Save" layoutX="152.0" layoutY="335.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="306.0" style="-fx-background-color: #cc941d #cc941d;" text="Зберегти">
          <font>

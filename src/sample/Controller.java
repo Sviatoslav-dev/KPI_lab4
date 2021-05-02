@@ -45,7 +45,7 @@ public class Controller {
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/Decanat_menu.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/decanat_menu.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
@@ -62,7 +62,7 @@ public class Controller {
                 SignInButton.getScene().getWindow().hide();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/Lecturer.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/lecturer_menu.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {
@@ -79,7 +79,7 @@ public class Controller {
 
                 SignInButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/StudentMenu.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/student_menu.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {

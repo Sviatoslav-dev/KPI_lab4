@@ -33,7 +33,7 @@ public class DecanatMenu {
             Exit.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/sample.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/main_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -48,7 +48,7 @@ public class DecanatMenu {
         register_student.setOnAction(event -> {
             register_student.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/register.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -64,7 +64,7 @@ public class DecanatMenu {
             Session.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/DecanatSession.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/decanat_session.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

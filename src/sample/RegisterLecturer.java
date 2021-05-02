@@ -49,7 +49,7 @@ public class RegisterLecturer {
         goBack.setOnAction(event -> {
             goBack.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/register.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -116,7 +116,7 @@ public class RegisterLecturer {
 
                 RegisterButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/Register.fxml"));
+                loader.setLocation(getClass().getResource("fxmls/register.fxml"));
                 try {
                     loader.load();
                 } catch (IOException e) {

@@ -63,7 +63,7 @@ public class LectorerSession {
         goBack.setOnAction(event -> {
             goBack.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Lecturer.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/lecturer_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

@@ -3,7 +3,6 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +26,7 @@ public class AddMark {
     @FXML
     void initialize() {
         addButton.setOnAction(event -> {
-            Main.db.add_mark(st_id, MarksLectorer.subject, Float.parseFloat(markField.getText()));
+            Main.db.add_mark(st_id, LectorerMarks.subject, Float.parseFloat(markField.getText()));
             try {
                 Main.db.save_students();
             } catch (IOException e) {

@@ -53,7 +53,7 @@ public class DecanatSession {
         goBack.setOnAction(event -> {
             goBack.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Decanat_menu.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/decanat_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

@@ -46,7 +46,7 @@ public class StudentSession {
             goBack.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("StudentMenu.fxml"));
+            loader.setLocation(getClass().getResource("student_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

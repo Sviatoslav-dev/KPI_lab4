@@ -33,7 +33,7 @@ public class StudentMenu {
             Exit.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/sample.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/main_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -50,7 +50,7 @@ public class StudentMenu {
             Marks.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("fxmls/Show_marks_student.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/student_marks.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
