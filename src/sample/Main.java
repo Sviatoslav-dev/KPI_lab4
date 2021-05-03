@@ -23,22 +23,27 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+
         db = new DataBase();
 
+        ShowDataBase();
+    }
+
+    void ShowDataBase () {
         for (int i = 0; i < db.accaunts.size(); i++) {
-            System.out.println(db.accaunts.get(i).username);
+            System.out.println(db.accaunts.get(i).getUsername());
         }
         System.out.println();
 
         for (int i = 0; i < db.students.size(); i++) {
-            System.out.println(db.students.get(i).username);
-            System.out.println(db.students.get(i).name);
-            System.out.println(db.students.get(i).group);
-            for (int j = 0; j < db.students.get(i).subjects.size(); j++) {
-                System.out.print(db.students.get(i).subjects.get(j).name + ", ");
-                if (db.students.get(i).subjects.get(j).subject_marks != null){
-                    for (int k = 0; k < db.students.get(i).subjects.get(j).subject_marks.size(); k++){
-                        System.out.print(db.students.get(i).subjects.get(j).subject_marks.get(k) + ", ");
+            System.out.println(db.students.get(i).getUsername());
+            System.out.println(db.students.get(i).getName());
+            System.out.println(db.students.get(i).getGroup());
+            for (int j = 0; j < db.students.get(i).getSubjects().size(); j++) {
+                System.out.print(db.students.get(i).getSubjects().get(j).getName() + ", ");
+                if (db.students.get(i).getSubjects().get(j).getSubjectMarks() != null){
+                    for (int k = 0; k < db.students.get(i).getSubjects().get(j).getSubjectMarks().size(); k++){
+                        System.out.print(db.students.get(i).getSubjects().get(j).getSubjectMarks().get(k) + ", ");
                     }
                 }
 
@@ -49,14 +54,12 @@ public class Main extends Application {
         System.out.println();
 
         for (int i = 0; i < db.lecturers.size(); i++) {
-            System.out.println(db.lecturers.get(i).name);
-            for (int j = 0; j < db.lecturers.get(i).subjects.size(); j++) {
-                System.out.println(db.lecturers.get(i).subjects.get(j));
+            System.out.println(db.lecturers.get(i).getName());
+            for (int j = 0; j < db.lecturers.get(i).getSubjects().size(); j++) {
+                System.out.println(db.lecturers.get(i).getSubjects().get(j));
             }
         }
         System.out.println();
-
-
     }
 
 

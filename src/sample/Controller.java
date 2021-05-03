@@ -1,9 +1,5 @@
 package sample;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,19 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Controller {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button SignUpButton;
 
     @FXML
     private PasswordField PasswordField;
@@ -41,60 +29,60 @@ public class Controller {
         SignInButton.setOnAction(event -> {
             String user = (Main.db.log_in(LoginField.getText(), PasswordField.getText()));
             System.out.println(user);
-            if (user.equals("Decanat")){
-                SignInButton.getScene().getWindow().hide();
+            switch (user) {
+                case "Decanat" -> {
+                    SignInButton.getScene().getWindow().hide();
 
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/decanat_menu.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("fxmls/decanat_menu.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
                 }
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-            }
-            else if (user.equals("Lecturer")){
-                Main.lectorer_id = Main.db.find_lectorer_by_username(LoginField.getText());
+                case "Lecturer" -> {
+                    Main.lectorer_id = Main.db.find_lectorer_by_username(LoginField.getText());
 
-                SignInButton.getScene().getWindow().hide();
+                    SignInButton.getScene().getWindow().hide();
 
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/lecturer_menu.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("fxmls/lecturer_menu.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
                 }
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-            }
+                case "Student" -> {
+                    Main.student_id = Main.db.find_student_by_username(LoginField.getText());
 
-            else if (user.equals("Student")){
-                Main.student_id = Main.db.find_student_by_username(LoginField.getText());
-
-                SignInButton.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("fxmls/student_menu.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    SignInButton.getScene().getWindow().hide();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("fxmls/student_menu.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                    System.out.println("student");
                 }
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-                System.out.println("student");
-            }
-
-            else{
-                Shake SignInButtonAnim = new Shake(SignInButton);
-                SignInButtonAnim.play();
+                default -> {
+                    Shake SignInButtonAnim = new Shake(SignInButton);
+                    SignInButtonAnim.play();
+                }
             }
         });
     }

@@ -4,11 +4,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DataBase {
-    ArrayList<Account> accaunts = new ArrayList<>();
-    ArrayList<Student> students = new ArrayList<>();
-    ArrayList<Lecturer> lecturers = new ArrayList<>();
+    public ArrayList<Account> accaunts;
+    public ArrayList<Student> students;
+    public ArrayList<Lecturer> lecturers;
 
     public DataBase () throws IOException, ClassNotFoundException {
+        getData();
+        //clearData ();
+    }
+
+    void getData () throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Accaunts.dat"));
         accaunts = (ArrayList<Account>)ois.readObject();
 
@@ -17,13 +22,13 @@ public class DataBase {
 
         ois = new ObjectInputStream(new FileInputStream("Lecturers.dat"));
         lecturers = (ArrayList<Lecturer>)ois.readObject();
+    }
 
-        //System.out.print(accaunts.get(0).username);
-
-        /*Account decanat = new Account();
-        decanat.password = "decanat123";
-        decanat.username = "Decanat";
-        decanat.type = "Decanat";
+    void clearData () throws IOException {
+        Account decanat = new Account();
+        decanat.setPassword("decanat123");
+        decanat.setUsername("Decanat");
+        decanat.setType("Decanat");
 
         accaunts.add(decanat);
 
@@ -34,11 +39,11 @@ public class DataBase {
         oos.writeObject(students);
 
         oos = new ObjectOutputStream(new FileOutputStream("Lecturers.dat"));
-        oos.writeObject(lecturers);*/
+        oos.writeObject(lecturers);
     }
 
-    public void save_accaunts () throws IOException {                                                 //Ці три функці для записування у файл
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Accaunts.dat"));  //нового акаунта, студента, чи викладача відповідно
+    public void save_accaunts () throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Accaunts.dat"));
         oos.writeObject(accaunts);
     }
 
@@ -53,48 +58,48 @@ public class DataBase {
     }
 
 
-    public void add_student (String name, String group, String username, String password, ArrayList<String> subjects) {  //Додавання студента
+    public void add_student (String name, String group, String username, String password, ArrayList<String> subjects) {
         Account student = new Account();
-        student.password = password;
-        student.username = username;
-        student.type = "Student";
+        student.setPassword(password);
+        student.setUsername(username);
+        student.setType("Student");
 
         Student st = new Student();
-        st.group = group;
-        st.subjects = new ArrayList<>();
-        for (int i = 0; i < subjects.size(); i++) {
+        st.setGroup(group);
+        st.setSubjects(new ArrayList<>());
+        for (String subject : subjects) {
             Subject sub = new Subject();
-            sub.name = subjects.get(i);
-            st.subjects.add(sub);
+            sub.setName(subject);
+            st.getSubjects().add(sub);
         }
-        st.name = name;
-        st.username = username;
+        st.setName(name);
+        st.setUsername(username);
 
         accaunts.add(student);
         students.add(st);
     }
 
-    public void add_lecturer (String name, String username, String password, ArrayList<String> groups, ArrayList<String> subjects) {      ////Додавання викладаче
+    public void add_lecturer (String name, String username, String password, ArrayList<String> groups, ArrayList<String> subjects) {
         Account acc = new Account();
-        acc.password = password;
-        acc.username = username;
-        acc.type = "Lecturer";
+        acc.setPassword(password);
+        acc.setUsername(username);
+        acc.setType("Lecturer");
 
         Lecturer lec = new Lecturer();
-        lec.groups = groups;
-        lec.name = name;
-        lec.subjects = subjects;
-        lec.username = username;
+        lec.setGroups(groups);
+        lec.setName(name);
+        lec.setSubjects(subjects);
+        lec.setUsername(username);
 
         lecturers.add(lec);
         accaunts.add(acc);
     }
 
-    public String log_in (String username, String password) {              //Для входу. Повертає тип акаунта, якщо акаунт відсутній повертає "Missing"
+    public String log_in (String username, String password) {
         int acc_id = -1;
 
         for (int i = 0; i < accaunts.size(); i++) {
-            if (accaunts.get(i).username.equals(username) && accaunts.get(i).password.equals(password)) {
+            if (accaunts.get(i).getUsername().equals(username) && accaunts.get(i).getPassword().equals(password)) {
                 acc_id = i;
             }
         }
@@ -102,15 +107,15 @@ public class DataBase {
         if (acc_id == -1) {
             return "Missing";
         } else {
-            return accaunts.get(acc_id).type;
+            return accaunts.get(acc_id).getType();
         }
     }
 
-    int find_student_by_username(String username) {           //Повертає номер у списку
+    public int find_student_by_username(String username) {
         int id = -1;
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).username.equals(username)) {
+            if (students.get(i).getUsername().equals(username)) {
                 id = i;
             }
         }
@@ -118,11 +123,11 @@ public class DataBase {
         return id;
     }
 
-    int find_lectorer_by_username(String username) {           //Повертає номер у списку
+    public int find_lectorer_by_username(String username) {
         int id = -1;
 
         for (int i = 0; i < lecturers.size(); i++) {
-            if (lecturers.get(i).username.equals(username)) {
+            if (lecturers.get(i).getUsername().equals(username)) {
                 id = i;
             }
         }
@@ -130,30 +135,24 @@ public class DataBase {
         return id;
     }
 
-    int add_mark (int student_id, String subject, float mark) {
-        int res = -1;
-        for (int i = 0; i < students.get(student_id).subjects.size(); i++) {
-            if (students.get(student_id).subjects.get(i).name.equals(subject)) {
-                if (students.get(student_id).subjects.get(i).subject_marks != null) {
-                    students.get(student_id).subjects.get(i).subject_marks.add(mark);
-                    students.get(student_id).subjects.get(i).sum_marks();
-                } else {
-                    students.get(student_id).subjects.get(i).subject_marks = new ArrayList<>();
-                    students.get(student_id).subjects.get(i).subject_marks.add(mark);
-                    students.get(student_id).subjects.get(i).sum_marks();
+    public void add_mark (int student_id, String subject, float mark) {
+        for (int i = 0; i < students.get(student_id).getSubjects().size(); i++) {
+            if (students.get(student_id).getSubjects().get(i).getName().equals(subject)) {
+                if (students.get(student_id).getSubjects().get(i).getSubjectMarks() == null) {
+                    students.get(student_id).getSubjects().get(i).setSubjectMarks(new ArrayList<>());
                 }
-                res = 0;
+                students.get(student_id).getSubjects().get(i).getSubjectMarks().add(mark);
+                students.get(student_id).getSubjects().get(i).sum_marks();
             }
         }
 
-        return res;
     }
 
-    int find_student_by_name(String name) {           //Повертає номер у списку
+    public int find_student_by_name(String name) {
         int id = -1;
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).name.equals(name)) {
+            if (students.get(i).getName().equals(name)) {
                 id = i;
             }
         }
@@ -161,22 +160,22 @@ public class DataBase {
         return id;
     }
 
-    int subjects_id (int st_id, String name) {
+    public int subjects_id (int st_id, String name) {
         int res = -1;
 
-        for (int i = 0; i < students.get(st_id).subjects.size(); i++) {
-            if (students.get(st_id).subjects.get(i).name.equals(name)) {
+        for (int i = 0; i < students.get(st_id).getSubjects().size(); i++) {
+            if (students.get(st_id).getSubjects().get(i).getName().equals(name)) {
                 res = i;
             }
         }
         return res;
     }
 
-    ArrayList<Integer> get_students_by_group_and_subject (String group, String subject) {
+    public ArrayList<Integer> get_students_by_group_and_subject (String group, String subject) {
         ArrayList<Integer> students_id = new ArrayList<>();
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).group.equals(group) && subjects_id(i, subject) != -1) {
+            if (students.get(i).getGroup().equals(group) && subjects_id(i, subject) != -1) {
                 students_id.add(i);
             }
         }

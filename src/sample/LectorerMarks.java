@@ -1,31 +1,20 @@
 package sample;
 
-import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class LectorerMarks {
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button Save;
@@ -34,10 +23,10 @@ public class LectorerMarks {
     private AnchorPane scrollPane;
 
     @FXML
-    private ChoiceBox groupsBox;
+    private ChoiceBox<String> groupsBox;
 
     @FXML
-    private ChoiceBox subjectsBox;
+    private ChoiceBox<String> subjectsBox;
 
     public static String subject;
 
@@ -80,8 +69,8 @@ public class LectorerMarks {
     }
 
     void input_scrollPane () {
-        subject = (String) subjectsBox.getValue();
-        String m = "";
+        subject = subjectsBox.getValue();
+        StringBuilder m = new StringBuilder();
 
         int size_Y = 50;
         int sub_id = -1;
@@ -92,8 +81,34 @@ public class LectorerMarks {
 
         ArrayList<Integer> students_id;
 
-        students_id = Main.db.get_students_by_group_and_subject((String) groupsBox.getValue(), (String) subjectsBox.getValue());
+        students_id = Main.db.get_students_by_group_and_subject(groupsBox.getValue(), subjectsBox.getValue());
 
+        input_column_names();
+
+        for (Integer integer : students_id) {
+            m.append(Main.db.students.get(integer).getName()).append(" - ");
+
+            for (int j = 0; j < Main.db.students.get(integer).getSubjects().size(); j++) {
+                if (Main.db.students.get(integer).getSubjects().get(j).getName().equals(subject)) {
+                    sub_id = j;
+                    AddMark.sub_id = sub_id;
+                    if (Main.db.students.get(integer).getSubjects().get(j).getSubjectMarks() != null) {
+                        for (int p = 0; p < Main.db.students.get(integer).getSubjects().get(j).getSubjectMarks().size(); p++) {
+                            m.append(Main.db.students.get(integer).getSubjects().get(j).getSubjectMarks().get(p).toString()).append(", ");
+                        }
+                    }
+                }
+            }
+
+            input_table(size_Y, m, integer, sub_id);
+
+            size_Y += 50;
+
+            m = new StringBuilder();
+        }
+    }
+
+    void input_column_names () {
         Text marks_text = new Text();
         marks_text.setText("Оцінки");
         marks_text.setX(50);
@@ -108,54 +123,33 @@ public class LectorerMarks {
 
         scrollPane.getChildren().add(marks_text);
         scrollPane.getChildren().add(sum_text);
+    }
 
+    void input_table (int size_Y, StringBuilder m, int student_id, int sub_id) {
+        marks.add(new Text());
+        marks.get(marks.size() - 1).setY(size_Y);
+        marks.get(marks.size() - 1).setX(10);
+        marks.get(marks.size() - 1).setText(m.toString());
 
-        for (int i = 0; i < students_id.size(); i++) {
-            m += Main.db.students.get(students_id.get(i)).name + " - ";
+        marks_sum.add(new Text());
+        marks_sum.get(marks_sum.size() - 1).setY(size_Y);
+        marks_sum.get(marks_sum.size() - 1).setX(450);
+        marks_sum.get(marks_sum.size() - 1).setText(Float.toString(Main.db.students.get(student_id).getSubjects().get(sub_id).getSum()));
 
-            for (int j = 0; j < Main.db.students.get(students_id.get(i)).subjects.size(); j++) {
-                if (Main.db.students.get(students_id.get(i)).subjects.get(j).name.equals(subject)) {
-                    sub_id = j;
-                    AddMark.sub_id = sub_id;
-                    if (Main.db.students.get(students_id.get(i)).subjects.get(j).subject_marks != null) {
-                        for (int p = 0; p < Main.db.students.get(students_id.get(i)).subjects.get(j).subject_marks.size(); p++) {
-                            m += Main.db.students.get(students_id.get(i)).subjects.get(j).subject_marks.get(p).toString() + ", ";
-                        }
-                    }
-                }
-            }
+        add_buttons.add(new Button());
+        add_buttons.get(add_buttons.size() - 1).setLayoutX(550);
+        add_buttons.get(add_buttons.size() - 1).setLayoutY(size_Y - 20);
+        add_buttons.get(add_buttons.size() - 1).setPrefHeight(15);
+        add_buttons.get(add_buttons.size() - 1).setPrefWidth(15);
+        add_buttons.get(add_buttons.size() - 1).setText("+");
 
-            marks.add(new Text());
-            marks.get(marks.size() - 1).setY(size_Y);
-            marks.get(marks.size() - 1).setX(10);
-            marks.get(marks.size() - 1).setText(m);
+        add_buttons.get(add_buttons.size() - 1).setOnAction(event -> add_mark(student_id));
 
-            marks_sum.add(new Text());
-            marks_sum.get(marks_sum.size() - 1).setY(size_Y);
-            marks_sum.get(marks_sum.size() - 1).setX(450);
-            marks_sum.get(marks_sum.size() - 1).setText(Float.toString(Main.db.students.get(i).subjects.get(sub_id).sum));
+        scrollPane.getChildren().add(marks.get(marks.size() - 1));
+        scrollPane.getChildren().add(marks_sum.get(marks_sum.size() - 1));
+        scrollPane.getChildren().add(add_buttons.get(add_buttons.size() - 1));
 
-            add_buttons.add(new Button());
-            add_buttons.get(add_buttons.size() - 1).setLayoutX(550);
-            add_buttons.get(add_buttons.size() - 1).setLayoutY(size_Y - 20);
-            add_buttons.get(add_buttons.size() - 1).setPrefHeight(15);
-            add_buttons.get(add_buttons.size() - 1).setPrefWidth(15);
-            add_buttons.get(add_buttons.size() - 1).setText("+");
-
-            int student_id = students_id.get(i);
-            add_buttons.get(add_buttons.size() - 1).setOnAction(event -> {
-                add_mark(student_id);
-            });
-
-            scrollPane.getChildren().add(marks.get(marks.size() - 1));
-            scrollPane.getChildren().add(marks_sum.get(marks_sum.size() - 1));
-            scrollPane.getChildren().add(add_buttons.get(add_buttons.size() - 1));
-
-            scrollPane.setMinHeight(scrollPane.getMaxHeight() + 50);
-            size_Y += 50;
-
-            m = "";
-        }
+        scrollPane.setMinHeight(scrollPane.getMaxHeight() + 50);
     }
 
     void add_mark (int student_id) {
@@ -189,15 +183,15 @@ public class LectorerMarks {
     }
 
     void inputChoiseBoxes () {
-        groupsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).groups.get(0));
-        subjectsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).subjects.get(0));
+        groupsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).getGroups().get(0));
+        subjectsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).getSubjects().get(0));
 
-        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).groups.size(); i++) {
-            groupsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).groups.get(i));
+        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).getGroups().size(); i++) {
+            groupsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).getGroups().get(i));
         }
 
-        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).subjects.size(); i++) {
-            subjectsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).subjects.get(i));
+        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).getSubjects().size(); i++) {
+            subjectsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).getSubjects().get(i));
         }
     }
 }

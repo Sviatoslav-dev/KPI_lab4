@@ -13,20 +13,19 @@ public class AddMarkSession {
     @FXML
     private Button addButton;
 
-    public static int st_id, sub_id;
+    public static int st_id;
 
     @FXML
     void initialize() {
         addButton.setOnAction(event -> {
-            if (Main.db.students.get(st_id).subjects.get(Main.db.subjects_id(st_id, LectorerSession.subject)).session <= 0) {
-                Main.db.students.get(st_id).subjects.get(Main.db.subjects_id(st_id, LectorerSession.subject)).session = Float.parseFloat(markField.getText());
-            } else if (Main.db.students.get(st_id).subjects.get(Main.db.subjects_id(st_id, LectorerSession.subject)).first_dopka <= 0) {
-                Main.db.students.get(st_id).subjects.get(Main.db.subjects_id(st_id, LectorerSession.subject)).first_dopka = Float.parseFloat(markField.getText());
-            } else if (Main.db.students.get(st_id).subjects.get(Main.db.subjects_id(st_id, LectorerSession.subject)).second_dopka <= 0) {
-                Main.db.students.get(st_id).subjects.get(Main.db.subjects_id(st_id, LectorerSession.subject)).second_dopka = Float.parseFloat(markField.getText());
+            if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSession() <= 0) {
+                Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSession(Float.parseFloat(markField.getText()));
+            } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getFirstAddSession() <= 0) {
+                Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setFirstAddSession(Float.parseFloat(markField.getText()));
+            } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSecondAddSession() <= 0) {
+                Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSecondAddSession(Float.parseFloat(markField.getText()));
             }
 
-            //Main.db.add_mark(st_id, MarksLectorer.subject, Float.parseFloat(markField.getText()));
             try {
                 Main.db.save_students();
             } catch (IOException e) {

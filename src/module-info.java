@@ -1,4 +1,4 @@
-module KPI.lab4 {
+module KPI.lab {
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;

@@ -4,41 +4,34 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LectorerSession">
-   <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0" style="-fx-background-color: #127808;">
-               <children>
-                  <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LectorerSession">
+   <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0"
+                  style="-fx-background-color: #127808;">
+         <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
+            <font>
+               <Font size="36.0"/>
+            </font>
+         </Label>
       </AnchorPane>
-      <Button fx:id="goBack" layoutX="191.0" layoutY="342.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Повернутися назад">
+   </AnchorPane>
+   <Button fx:id="goBack" layoutX="191.0" layoutY="342.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0"
+           style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Повернутися назад">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Button>
+   <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="610.0" style="-fx-background-color: #127808;">
+      <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="36.0"/>
          </font>
-      </Button>
-      <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="610.0" style="-fx-background-color: #127808;">
-         <children>
-            <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="groupsBox" layoutX="296.0" layoutY="17.0" prefHeight="26.0" prefWidth="119.0" />
-            <ChoiceBox fx:id="subjectsBox" layoutX="446.0" layoutY="17.0" prefWidth="150.0" />
-         </children>
-      </AnchorPane>
-      <ScrollPane layoutY="60.0" prefHeight="250.0" prefWidth="600.0">
-         <content>
-            <AnchorPane fx:id="scrollPane" minHeight="100.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0" />
-         </content>
-      </ScrollPane>
-   </children>
+      </Label>
+      <ChoiceBox fx:id="groupsBox" layoutX="296.0" layoutY="17.0" prefHeight="26.0" prefWidth="119.0"/>
+      <ChoiceBox fx:id="subjectsBox" layoutX="446.0" layoutY="17.0" prefWidth="150.0"/>
+   </AnchorPane>
+   <ScrollPane layoutY="60.0" prefHeight="250.0" prefWidth="600.0">
+      <AnchorPane fx:id="scrollPane" minHeight="100.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0"/>
+   </ScrollPane>
 </AnchorPane>

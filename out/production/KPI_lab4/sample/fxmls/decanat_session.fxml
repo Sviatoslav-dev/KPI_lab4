@@ -4,42 +4,38 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DecanatSession">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DecanatSession">
 
-    <children>
-        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
-            <children>
-                <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0" style="-fx-background-color: #127808;">
-                    <children>
-                        <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
-                            <font>
-                                <Font size="36.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-              <ScrollPane layoutX="-5.0" layoutY="75.0" prefHeight="250.0" prefWidth="600.0">
-                  <content>
-                      <AnchorPane fx:id="scrollPane" minHeight="100.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0" />
-                  </content>
-              </ScrollPane>
-            </children>
+    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+        <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0"
+                    style="-fx-background-color: #127808;">
+            <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS"
+                   textFill="WHITE">
+                <font>
+                    <Font size="36.0"/>
+                </font>
+            </Label>
         </AnchorPane>
-        <Button fx:id="goBack" layoutX="191.0" layoutY="342.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Повернутися назад">
+        <ScrollPane layoutX="-5.0" layoutY="75.0" prefHeight="250.0" prefWidth="600.0">
+            <AnchorPane fx:id="scrollPane" minHeight="100.0" minWidth="600.0" prefHeight="250.0"
+                        prefWidth="600.0"/>
+        </ScrollPane>
+    </AnchorPane>
+    <Button fx:id="goBack" layoutX="191.0" layoutY="342.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0"
+            style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Повернутися назад">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Button>
+    <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="610.0" style="-fx-background-color: #127808;">
+        <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
             <font>
-                <Font size="18.0" />
+                <Font size="36.0"/>
             </font>
-        </Button>
-        <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="610.0" style="-fx-background-color: #127808;">
-            <children>
-                <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
-                    <font>
-                        <Font size="36.0" />
-                    </font>
-                </Label>
-            <TextField fx:id="NameField" layoutX="284.0" layoutY="25.0" prefHeight="26.0" prefWidth="237.0" />
-            <Button fx:id="Search" layoutX="534.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Найти" />
-            </children>
-        </AnchorPane>
-    </children>
+        </Label>
+        <TextField fx:id="NameField" layoutX="284.0" layoutY="25.0" prefHeight="26.0" prefWidth="237.0"/>
+        <Button fx:id="Search" layoutX="534.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0"
+                prefWidth="64.0" text="Найти"/>
+    </AnchorPane>
 </AnchorPane>

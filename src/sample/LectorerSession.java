@@ -1,28 +1,20 @@
 package sample;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class LectorerSession {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button goBack;
@@ -31,10 +23,10 @@ public class LectorerSession {
     private AnchorPane scrollPane;
 
     @FXML
-    private ChoiceBox groupsBox;
+    private ChoiceBox<String> groupsBox;
 
     @FXML
-    private ChoiceBox subjectsBox;
+    private ChoiceBox<String> subjectsBox;
 
     public static String subject;
 
@@ -77,8 +69,7 @@ public class LectorerSession {
     }
 
     void input_scrollPane () {
-        subject = (String) subjectsBox.getValue();
-        //String m = "";
+        subject = subjectsBox.getValue();
 
         int size_Y = 50;
         int sub_id = -1;
@@ -91,8 +82,27 @@ public class LectorerSession {
 
         ArrayList<Integer> students_id;
 
-        students_id = Main.db.get_students_by_group_and_subject((String) groupsBox.getValue(), (String) subjectsBox.getValue());
+        students_id = Main.db.get_students_by_group_and_subject(groupsBox.getValue(), subjectsBox.getValue());
 
+        input_column_names();
+
+        for (Integer integer : students_id) {
+
+            for (int j = 0; j < Main.db.students.get(integer).getSubjects().size(); j++) {
+                if (Main.db.students.get(integer).getSubjects().get(j).getName().equals(subject)) {
+                    sub_id = j;
+                    AddMark.sub_id = sub_id;
+                }
+            }
+
+            input_table (integer, size_Y, sub_id);
+
+            scrollPane.setMinHeight(scrollPane.getMaxHeight() + 50);
+            size_Y += 50;
+        }
+    }
+
+    void input_column_names () {
         Text names_text = new Text();
         names_text.setText("Ім'я");
         names_text.setX(50);
@@ -121,84 +131,60 @@ public class LectorerSession {
         scrollPane.getChildren().add(session_text);
         scrollPane.getChildren().add(first_dopka_text);
         scrollPane.getChildren().add(second_dopka_text);
+    }
+
+    void input_table (int integer, int size_Y, int sub_id) {
+        names.add(new Text());
+        names.get(names.size() - 1).setY(size_Y);
+        names.get(names.size() - 1).setX(10);
+        names.get(names.size() - 1).setText(Main.db.students.get(integer).getName());
+
+        main_session.add(new Text());
+        main_session.get(main_session.size() - 1).setY(size_Y);
+        main_session.get(main_session.size() - 1).setX(250);
+
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSession() != -1)
+            main_session.get(main_session.size() - 1).setText(Float.toString(Main.db.students.get(integer).getSubjects().get(sub_id).getSession()));
+        else
+            main_session.get(main_session.size() - 1).setText("-");
 
 
-        for (int i = 0; i < students_id.size(); i++) {
-            //m += Main.db.students.get(students_id.get(i)).name + " - ";
-            //System.out.println(Main.db.students.get(i).name);
+        first_dopka.add(new Text());
+        first_dopka.get(first_dopka.size() - 1).setY(size_Y);
+        first_dopka.get(first_dopka.size() - 1).setX(350);
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getFirstAddSession() != -1)
 
-            for (int j = 0; j < Main.db.students.get(students_id.get(i)).subjects.size(); j++) {
-                if (Main.db.students.get(students_id.get(i)).subjects.get(j).name.equals(subject)) {
-                    sub_id = j;
-                    AddMark.sub_id = sub_id;
-                    //if (Main.db.students.get(students_id.get(i)).subjects.get(j).subject_marks != null) {
-                        //for (int p = 0; p < Main.db.students.get(students_id.get(i)).subjects.get(j).subject_marks.size(); p++) {
-                            //m += Main.db.students.get(students_id.get(i)).subjects.get(j).subject_marks.get(p).toString() + ", ";
-                        //}
-                    //}
-                }
-            }
-
-            names.add(new Text());
-            names.get(names.size() - 1).setY(size_Y);
-            names.get(names.size() - 1).setX(10);
-            names.get(names.size() - 1).setText(Main.db.students.get(students_id.get(i)).name);
-
-            main_session.add(new Text());
-            main_session.get(main_session.size() - 1).setY(size_Y);
-            main_session.get(main_session.size() - 1).setX(250);
-
-            if (Main.db.students.get(students_id.get(i)).subjects.get(sub_id).session != -1)
-                main_session.get(main_session.size() - 1).setText(Float.toString(Main.db.students.get(students_id.get(i)).subjects.get(sub_id).session));
-            else
-                main_session.get(main_session.size() - 1).setText("-");
+            first_dopka.get(first_dopka.size() - 1).setText(Float.toString(Main.db.students.get(integer).getSubjects().get(sub_id).getFirstAddSession()));
+        else
+            first_dopka.get(first_dopka.size() - 1).setText("-");
 
 
-            first_dopka.add(new Text());
-            first_dopka.get(first_dopka.size() - 1).setY(size_Y);
-            first_dopka.get(first_dopka.size() - 1).setX(350);
-            if (Main.db.students.get(students_id.get(i)).subjects.get(sub_id).first_dopka != -1)
+        second_dopka.add(new Text());
+        second_dopka.get(second_dopka.size() - 1).setY(size_Y);
+        second_dopka.get(second_dopka.size() - 1).setX(450);
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSecondAddSession() != -1)
+            second_dopka.get(second_dopka.size() - 1).setText(Float.toString(Main.db.students.get(integer).getSubjects().get(sub_id).getSecondAddSession()));
+        else
+            second_dopka.get(second_dopka.size() - 1).setText("-");
 
-                first_dopka.get(first_dopka.size() - 1).setText(Float.toString(Main.db.students.get(students_id.get(i)).subjects.get(sub_id).first_dopka));
-            else
-                first_dopka.get(first_dopka.size() - 1).setText("-");
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSecondAddSession() <= 0 && Main.db.students.get(integer).getSubjects().get(sub_id).getSession() < 60 && Main.db.students.get(integer).getSubjects().get(sub_id).getFirstAddSession() < 60) {
+            add_buttons.add(new Button());
+            add_buttons.get(add_buttons.size() - 1).setLayoutX(550);
+            add_buttons.get(add_buttons.size() - 1).setLayoutY(size_Y - 20);
+            add_buttons.get(add_buttons.size() - 1).setPrefHeight(15);
+            add_buttons.get(add_buttons.size() - 1).setPrefWidth(15);
+            add_buttons.get(add_buttons.size() - 1).setText("+");
 
+            int student_id = integer;
+            add_buttons.get(add_buttons.size() - 1).setOnAction(event -> add_mark(student_id));
 
-            second_dopka.add(new Text());
-            second_dopka.get(second_dopka.size() - 1).setY(size_Y);
-            second_dopka.get(second_dopka.size() - 1).setX(450);
-            if (Main.db.students.get(students_id.get(i)).subjects.get(sub_id).second_dopka != -1)
-                second_dopka.get(second_dopka.size() - 1).setText(Float.toString(Main.db.students.get(students_id.get(i)).subjects.get(sub_id).second_dopka));
-            else
-                second_dopka.get(second_dopka.size() - 1).setText("-");
-
-            if (Main.db.students.get(students_id.get(i)).subjects.get(sub_id).second_dopka <= 0 && Main.db.students.get(students_id.get(i)).subjects.get(sub_id).session < 60 && Main.db.students.get(students_id.get(i)).subjects.get(sub_id).first_dopka < 60) {
-                add_buttons.add(new Button());
-                add_buttons.get(add_buttons.size() - 1).setLayoutX(550);
-                add_buttons.get(add_buttons.size() - 1).setLayoutY(size_Y - 20);
-                add_buttons.get(add_buttons.size() - 1).setPrefHeight(15);
-                add_buttons.get(add_buttons.size() - 1).setPrefWidth(15);
-                add_buttons.get(add_buttons.size() - 1).setText("+");
-
-                int student_id = students_id.get(i);
-                add_buttons.get(add_buttons.size() - 1).setOnAction(event -> {
-                    add_mark(student_id);
-                });
-
-                scrollPane.getChildren().add(add_buttons.get(add_buttons.size() - 1));
-            }
-
-            scrollPane.getChildren().add(names.get(names.size() - 1));
-            scrollPane.getChildren().add(main_session.get(main_session.size() - 1));
-            scrollPane.getChildren().add(first_dopka.get(first_dopka.size() - 1));
-            scrollPane.getChildren().add(second_dopka.get(second_dopka.size() - 1));
-
-
-            scrollPane.setMinHeight(scrollPane.getMaxHeight() + 50);
-            size_Y += 50;
-
-            //m = "";
+            scrollPane.getChildren().add(add_buttons.get(add_buttons.size() - 1));
         }
+
+        scrollPane.getChildren().add(names.get(names.size() - 1));
+        scrollPane.getChildren().add(main_session.get(main_session.size() - 1));
+        scrollPane.getChildren().add(first_dopka.get(first_dopka.size() - 1));
+        scrollPane.getChildren().add(second_dopka.get(second_dopka.size() - 1));
     }
 
     void add_mark (int student_id) {
@@ -234,15 +220,15 @@ public class LectorerSession {
     }
 
     void inputChoiseBoxes () {
-        groupsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).groups.get(0));
-        subjectsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).subjects.get(0));
+        groupsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).getGroups().get(0));
+        subjectsBox.setValue(Main.db.lecturers.get(Main.lectorer_id).getSubjects().get(0));
 
-        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).groups.size(); i++) {
-            groupsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).groups.get(i));
+        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).getGroups().size(); i++) {
+            groupsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).getGroups().get(i));
         }
 
-        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).subjects.size(); i++) {
-            subjectsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).subjects.get(i));
+        for (int i = 0; i < Main.db.lecturers.get(Main.lectorer_id).getSubjects().size(); i++) {
+            subjectsBox.getItems().add(Main.db.lecturers.get(Main.lectorer_id).getSubjects().get(i));
         }
     }
 }

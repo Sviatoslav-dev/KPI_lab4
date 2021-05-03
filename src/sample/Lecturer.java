@@ -2,22 +2,43 @@ package sample;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.stage.Stage;
 
 public class Lecturer implements Serializable {
-    String username;
-    String name;
-    ArrayList<String> subjects;
-    ArrayList<String> groups;
+    private String username;
+    private String name;
+    private ArrayList<String> subjects;
+    private ArrayList<String> groups;
+
+    public String getUsername () {
+        return username;
+    }
+
+    public void setUsername (String un) {
+        username = un;
+    }
+
+    public String getName () {
+        return name;
+    }
+
+    public void setName (String n) {
+        name = n;
+    }
+
+    public ArrayList<String> getSubjects () {
+        return subjects;
+    }
+
+    public void setSubjects (ArrayList<String> sb) {
+        subjects = sb;
+    }
+
+    public ArrayList<String> getGroups () {
+        return groups;
+    }
+
+    public void setGroups (ArrayList<String> gp) {
+        groups = gp;
+    }
 }
 
