@@ -182,4 +182,8 @@ public class DataBase {
 
         return students_id;
     }
+
+    public void transfer_in_other_group (int st_id, String group) {
+        students.get(st_id).setGroup(group);
+    }
 }

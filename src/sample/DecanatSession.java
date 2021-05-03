@@ -70,6 +70,7 @@ public class DecanatSession {
             names_text.setText("Студента не знайдено");
             names_text.setX(50);
             names_text.setY(15);
+            scrollPane.getChildren().add(names_text);
         } else {
 
             input_column_names();

@@ -21,6 +21,9 @@ public class DecanatMenu {
     private Button register_student;
 
     @FXML
+    private Button Transfer;
+
+    @FXML
     void initialize() {
         Exit.setOnAction(event -> {
             Exit.getScene().getWindow().hide();
@@ -58,6 +61,22 @@ public class DecanatMenu {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("fxmls/decanat_session.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
+
+        Transfer.setOnAction(event-> {
+            Transfer.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("fxmls/decanat_transfer.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
