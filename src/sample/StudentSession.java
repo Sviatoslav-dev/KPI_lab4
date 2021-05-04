@@ -35,7 +35,7 @@ public class StudentSession {
             goBack.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("student_menu.fxml"));
+            loader.setLocation(getClass().getResource("fxmls/student_menu.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -76,27 +76,27 @@ public class StudentSession {
     void input_column_names () {
         Text names_text = new Text();
         names_text.setText("Предмет");
-        names_text.setX(50);
+        names_text.setX(15);
         names_text.setY(15);
-        names_text.setStroke(Color.BLUE);
+        names_text.setStroke(Color.BLACK);
 
         Text session_text = new Text();
         session_text.setText("Сесія");
-        session_text.setX(150);
+        session_text.setX(139);
         session_text.setY(15);
-        session_text.setStroke(Color.BLUE);
+        session_text.setStroke(Color.BLACK);
 
         Text first_dopka_text = new Text();
         first_dopka_text.setText("Перша перездача");
-        first_dopka_text.setX(250);
+        first_dopka_text.setX(200);
         first_dopka_text.setY(15);
-        first_dopka_text.setStroke(Color.BLUE);
+        first_dopka_text.setStroke(Color.BLACK);
 
         Text second_dopka_text = new Text();
         second_dopka_text.setText("Дрyга перездача");
-        second_dopka_text.setX(350);
+        second_dopka_text.setX(322);
         second_dopka_text.setY(15);
-        second_dopka_text.setStroke(Color.BLUE);
+        second_dopka_text.setStroke(Color.BLACK);
 
         scrollPane.getChildren().add(names_text);
         scrollPane.getChildren().add(session_text);

@@ -82,15 +82,15 @@ public class StudentMarks {
     void input_column_names () {
         Text marks_text = new Text();
         marks_text.setText("Оцінки");
-        marks_text.setX(50);
+        marks_text.setX(37);
         marks_text.setY(15);
-        marks_text.setStroke(Color.BLUE);
+        marks_text.setStroke(Color.BLACK);
 
         Text sum_text = new Text();
         sum_text.setText("Сума");
-        sum_text.setX(450);
+        sum_text.setX(445);
         sum_text.setY(15);
-        sum_text.setStroke(Color.BLUE);
+        sum_text.setStroke(Color.BLACK);
 
         scrollPane.getChildren().add(marks_text);
         scrollPane.getChildren().add(sum_text);
