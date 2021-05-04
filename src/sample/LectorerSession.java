@@ -20,6 +20,9 @@ public class LectorerSession {
     private Button goBack;
 
     @FXML
+    private Button update;
+
+    @FXML
     private AnchorPane scrollPane;
 
     @FXML
@@ -65,6 +68,11 @@ public class LectorerSession {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+        });
+
+        update.setOnAction(event -> {
+            clear_scrollPane ();
+            input_scrollPane ();
         });
     }
 
@@ -143,7 +151,7 @@ public class LectorerSession {
         main_session.get(main_session.size() - 1).setY(size_Y);
         main_session.get(main_session.size() - 1).setX(250);
 
-        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSession() != -1)
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSession() > 0)
             main_session.get(main_session.size() - 1).setText(Float.toString(Main.db.students.get(integer).getSubjects().get(sub_id).getSession()));
         else
             main_session.get(main_session.size() - 1).setText("-");
@@ -152,8 +160,8 @@ public class LectorerSession {
         first_dopka.add(new Text());
         first_dopka.get(first_dopka.size() - 1).setY(size_Y);
         first_dopka.get(first_dopka.size() - 1).setX(350);
-        if (Main.db.students.get(integer).getSubjects().get(sub_id).getFirstAddSession() != -1)
 
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getFirstAddSession() > 0)
             first_dopka.get(first_dopka.size() - 1).setText(Float.toString(Main.db.students.get(integer).getSubjects().get(sub_id).getFirstAddSession()));
         else
             first_dopka.get(first_dopka.size() - 1).setText("-");
@@ -162,7 +170,7 @@ public class LectorerSession {
         second_dopka.add(new Text());
         second_dopka.get(second_dopka.size() - 1).setY(size_Y);
         second_dopka.get(second_dopka.size() - 1).setX(450);
-        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSecondAddSession() != -1)
+        if (Main.db.students.get(integer).getSubjects().get(sub_id).getSecondAddSession() > 0)
             second_dopka.get(second_dopka.size() - 1).setText(Float.toString(Main.db.students.get(integer).getSubjects().get(sub_id).getSecondAddSession()));
         else
             second_dopka.get(second_dopka.size() - 1).setText("-");

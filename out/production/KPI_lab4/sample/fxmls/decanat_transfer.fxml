@@ -27,7 +27,7 @@
                 <Font size="36.0" />
             </font>
         </Label>
-        <TextField fx:id="NameField" layoutX="284.0" layoutY="25.0" prefHeight="26.0" prefWidth="237.0" />
+        <TextField fx:id="NameField" layoutX="284.0" layoutY="25.0" prefHeight="26.0" prefWidth="237.0" promptText="Прізвище та ім'я" />
         <Button fx:id="Search" layoutX="534.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Найти" />
     </AnchorPane>
 

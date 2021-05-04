@@ -69,6 +69,9 @@ public class RegisterLecturer {
 
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == ',') {
+                if (groups.size() > 0 && groups.get(groups.size()  - 1).equals("")) {
+                    groups.remove(groups.size()  - 1);
+                }
                 k++;
                 groups.add("");
             } else {
@@ -88,6 +91,10 @@ public class RegisterLecturer {
 
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == ',') {
+                    if (subjects.size() > 0 && subjects.get(subjects.size()  - 1).equals("")) {
+                        subjects.remove(subjects.size()  - 1);
+                    }
+
                     k++;
                     subjects.add("");
                 } else {

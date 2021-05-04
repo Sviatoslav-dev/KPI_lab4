@@ -115,7 +115,7 @@ public class StudentSession {
         main_session.get(main_session.size() - 1).setY(size_Y);
         main_session.get(main_session.size() - 1).setX(150);
 
-        if (subject.getSession() != -1)
+        if (subject.getSession()  > 0)
             main_session.get(main_session.size() - 1).setText(Float.toString(subject.getSession()));
         else
             main_session.get(main_session.size() - 1).setText("-");
@@ -125,7 +125,7 @@ public class StudentSession {
         first_dopka.get(first_dopka.size() - 1).setY(size_Y);
         first_dopka.get(first_dopka.size() - 1).setX(250);
 
-        if (subject.getFirstAddSession() != -1)
+        if (subject.getFirstAddSession()  > 0)
             first_dopka.get(first_dopka.size() - 1).setText(Float.toString(subject.getFirstAddSession()));
         else
             first_dopka.get(first_dopka.size() - 1).setText("-");
@@ -134,7 +134,8 @@ public class StudentSession {
         second_dopka.add(new Text());
         second_dopka.get(second_dopka.size() - 1).setY(size_Y);
         second_dopka.get(second_dopka.size() - 1).setX(350);
-        if (subject.getSecondAddSession() != -1)
+
+        if (subject.getSecondAddSession()  > 0)
             second_dopka.get(second_dopka.size() - 1).setText(Float.toString(subject.getSecondAddSession()));
         else
             second_dopka.get(second_dopka.size() - 1).setText("-");

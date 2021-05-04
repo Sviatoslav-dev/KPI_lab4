@@ -20,6 +20,9 @@ public class LectorerMarks {
     private Button Save;
 
     @FXML
+    private Button update;
+
+    @FXML
     private AnchorPane scrollPane;
 
     @FXML
@@ -65,6 +68,11 @@ public class LectorerMarks {
             stage.setScene(new Scene(root));
             stage.show();
 
+        });
+
+        update.setOnAction(event -> {
+            clear_scrollPane ();
+            input_scrollPane ();
         });
     }
 

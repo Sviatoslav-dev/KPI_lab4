@@ -74,6 +74,10 @@ public class RegisterStudent {
 
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == ',') {
+                    if (subjects.size() > 0 && subjects.get(subjects.size()  - 1).equals("")) {
+                        subjects.remove(subjects.size()  - 1);
+                        k--;
+                    }
                     k++;
                     subjects.add("");
                 } else {

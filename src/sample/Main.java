@@ -31,7 +31,7 @@ public class Main extends Application {
 
     void ShowDataBase () {
         for (int i = 0; i < db.accaunts.size(); i++) {
-            System.out.println(db.accaunts.get(i).getUsername());
+            System.out.println(db.accaunts.get(i).getUsername() + " " + db.accaunts.get(i).getPassword());
         }
         System.out.println();
 
@@ -55,9 +55,16 @@ public class Main extends Application {
 
         for (int i = 0; i < db.lecturers.size(); i++) {
             System.out.println(db.lecturers.get(i).getName());
+            System.out.println(db.lecturers.get(i).getUsername());
             for (int j = 0; j < db.lecturers.get(i).getSubjects().size(); j++) {
                 System.out.println(db.lecturers.get(i).getSubjects().get(j));
             }
+
+            for (int j = 0; j < db.lecturers.get(i).getGroups().size(); j++) {
+                System.out.println(db.lecturers.get(i).getGroups().get(j));
+            }
+
+            System.out.println();
         }
         System.out.println();
     }
