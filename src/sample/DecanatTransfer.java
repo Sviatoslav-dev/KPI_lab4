@@ -69,14 +69,14 @@ public class DecanatTransfer {
             pane.getChildren().add(text);
 
             Group = new TextField();
-            Group.setLayoutX(300);
-            Group.setLayoutY(200);
+            Group.setLayoutX(200);
+            Group.setLayoutY(100);
             Group.setPromptText("Перевести в");
             pane.getChildren().add(Group);
 
             transfer = new Button();
-            transfer.setLayoutX(300);
-            transfer.setLayoutY(210);
+            transfer.setLayoutX(250);
+            transfer.setLayoutY(150);
             transfer.setText("Перевести");
             transfer.setOnAction(event-> {
                 try {
@@ -85,6 +85,7 @@ public class DecanatTransfer {
                     e.printStackTrace();
                 }
             });
+            pane.getChildren().add(transfer);
         }
     }
 
@@ -99,5 +100,18 @@ public class DecanatTransfer {
     void Transfer (int st_id) throws IOException {
         Main.db.transfer_in_other_group(st_id, Group.getText());
         Main.db.save_students();
+
+        goBack.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("fxmls/decanat_menu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
