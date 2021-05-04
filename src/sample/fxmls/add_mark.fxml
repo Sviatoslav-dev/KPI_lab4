@@ -3,9 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddMark">
-   <TextField fx:id="markField" layoutX="24.0" layoutY="54.0" prefHeight="26.0" prefWidth="152.0"/>
-   <Button fx:id="addButton" layoutX="55.0" layoutY="123.0" mnemonicParsing="false" text="Поставити"/>
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddMark">
+   <TextField fx:id="markField" layoutX="24.0" layoutY="54.0" prefHeight="26.0" prefWidth="152.0" promptText="Оцінка" />
+   <Button fx:id="addButton" layoutX="55.0" layoutY="123.0" mnemonicParsing="false" text="Поставити" />
 </AnchorPane>

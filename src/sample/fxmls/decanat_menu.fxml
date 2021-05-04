@@ -11,7 +11,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="Session" layoutX="177.0" layoutY="145.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Сесія">
+      <Button fx:id="Session" layoutX="177.0" layoutY="145.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Сесія та заліки">
          <font>
             <Font size="18.0" />
          </font>

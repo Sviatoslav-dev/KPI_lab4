@@ -71,7 +71,7 @@ public class DecanatTransfer {
             Group = new TextField();
             Group.setLayoutX(200);
             Group.setLayoutY(100);
-            Group.setPromptText("Перевести в");
+            Group.setPromptText("Перевести в:");
             pane.getChildren().add(Group);
 
             transfer = new Button();

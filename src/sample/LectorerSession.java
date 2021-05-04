@@ -104,7 +104,7 @@ public class LectorerSession {
 
     void input_column_names () {
         Text names_text = new Text();
-        names_text.setText("Ім'я");
+        names_text.setText("Прізвище та імʼя");
         names_text.setX(50);
         names_text.setY(15);
         names_text.setStroke(Color.BLUE);
@@ -116,13 +116,13 @@ public class LectorerSession {
         session_text.setStroke(Color.BLUE);
 
         Text first_dopka_text = new Text();
-        first_dopka_text.setText("Допка");
+        first_dopka_text.setText("Перша перездача");
         first_dopka_text.setX(350);
         first_dopka_text.setY(15);
         first_dopka_text.setStroke(Color.BLUE);
 
         Text second_dopka_text = new Text();
-        second_dopka_text.setText("Дрyга допка");
+        second_dopka_text.setText("Дрyга перездача");
         second_dopka_text.setX(450);
         second_dopka_text.setY(15);
         second_dopka_text.setStroke(Color.BLUE);
@@ -201,7 +201,7 @@ public class LectorerSession {
         Scene secondScene = new Scene(root);
 
         Stage newWindow = new Stage();
-        newWindow.setTitle("Second Stage");
+        newWindow.setTitle(Main.db.students.get(student_id).getName());
         newWindow.setScene(secondScene);
 
         newWindow.show();

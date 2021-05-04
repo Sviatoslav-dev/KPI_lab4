@@ -87,13 +87,13 @@ public class StudentSession {
         session_text.setStroke(Color.BLUE);
 
         Text first_dopka_text = new Text();
-        first_dopka_text.setText("Допка");
+        first_dopka_text.setText("Перша перездача");
         first_dopka_text.setX(250);
         first_dopka_text.setY(15);
         first_dopka_text.setStroke(Color.BLUE);
 
         Text second_dopka_text = new Text();
-        second_dopka_text.setText("Дрyга допка");
+        second_dopka_text.setText("Дрyга перездача");
         second_dopka_text.setX(350);
         second_dopka_text.setY(15);
         second_dopka_text.setStroke(Color.BLUE);

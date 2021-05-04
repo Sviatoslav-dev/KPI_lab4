@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sample.StudentMenu">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StudentMenu">
    <AnchorPane prefHeight="77.0" prefWidth="610.0" style="-fx-background-color: #127808;">
       <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
          <font>
-            <Font size="36.0"/>
+            <Font size="36.0" />
          </font>
       </Label>
    </AnchorPane>
-   <Button fx:id="Exit" layoutX="187.0" layoutY="300.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0"
-           style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Вийти">
+   <Button fx:id="Exit" layoutX="187.0" layoutY="300.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Вийти">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Button>
-   <Button fx:id="Marks" layoutX="187.0" layoutY="132.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0"
-           style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Оцінки">
+   <Button fx:id="Marks" layoutX="187.0" layoutY="132.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Оцінки">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Button>
-   <Button fx:id="Session" layoutX="187.0" layoutY="193.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0"
-           style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Сесія">
+   <Button fx:id="Session" layoutX="187.0" layoutY="193.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #cc941d #cc941d #cc941d #cc941d;" text="Сесія та заліки">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Button>
 </AnchorPane>
