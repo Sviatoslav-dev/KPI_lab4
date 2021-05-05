@@ -30,7 +30,7 @@
    <ScrollPane layoutY="60.0" prefHeight="250.0" prefWidth="600.0">
       <AnchorPane fx:id="scrollPane" minHeight="100.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0" />
    </ScrollPane>
-   <Button fx:id="goBack" layoutX="162.0" layoutY="345.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="306.0" style="-fx-background-color: #cc941d #cc941d;" text="Повернутися назад">
+   <Button fx:id="goBack" layoutX="162.0" layoutY="345.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="306.0" style="-fx-background-color: #cc941d;" text="Повернутися назад">
       <font>
          <Font size="18.0" />
       </font>
