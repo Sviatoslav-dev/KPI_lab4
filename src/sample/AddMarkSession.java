@@ -1,5 +1,6 @@
 package sample;
 
+import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -18,20 +19,27 @@ public class AddMarkSession {
     @FXML
     void initialize() {
         addButton.setOnAction(event -> {
-            if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSession() <= 0) {
-                Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSession(Float.parseFloat(markField.getText()));
-            } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getFirstAddSession() <= 0) {
-                Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setFirstAddSession(Float.parseFloat(markField.getText()));
-            } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSecondAddSession() <= 0) {
-                Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSecondAddSession(Float.parseFloat(markField.getText()));
-            }
+            float mark = Float.parseFloat(markField.getText());
+            if (mark > 0 && mark <= 100) {
+                if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSession() <= 0) {
+                    Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSession(Float.parseFloat(markField.getText()));
+                } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getFirstAddSession() <= 0) {
+                    Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setFirstAddSession(Float.parseFloat(markField.getText()));
+                } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSecondAddSession() <= 0) {
+                    Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSecondAddSession(Float.parseFloat(markField.getText()));
+                }
 
-            try {
-                Main.db.save_students();
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    Main.db.save_students();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                addButton.getScene().getWindow().hide();
             }
-            addButton.getScene().getWindow().hide();
+            else {
+                Shake addButtonAnim = new Shake(addButton);
+                addButtonAnim.play();
+            }
         });
     }
 }

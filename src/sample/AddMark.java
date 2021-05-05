@@ -1,5 +1,6 @@
 package sample;
 
+import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -19,13 +20,20 @@ public class AddMark {
     @FXML
     void initialize() {
         addButton.setOnAction(event -> {
-            Main.db.add_mark(st_id, LectorerMarks.subject, Float.parseFloat(markField.getText()));
-            try {
-                Main.db.save_students();
-            } catch (IOException e) {
-                e.printStackTrace();
+            float mark = Float.parseFloat(markField.getText());
+            if (mark > 0 && mark <= 100) {
+                Main.db.add_mark(st_id, LectorerMarks.subject, mark);
+                try {
+                    Main.db.save_students();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                addButton.getScene().getWindow().hide();
             }
-            addButton.getScene().getWindow().hide();
+            else {
+                Shake addButtonAnim = new Shake(addButton);
+                addButtonAnim.play();
+            }
         });
     }
 }

@@ -36,7 +36,10 @@ public class Subject implements Serializable {
     }
 
     public float getSum () {
-        return sum;
+        if (sum <= 100) {
+            return sum;
+        }
+        return 100;
     }
 
     public void setSum (float s) {

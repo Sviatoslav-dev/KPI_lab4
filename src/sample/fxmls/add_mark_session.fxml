@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddMarkSession">
-
-    <TextField fx:id="markField" layoutX="24.0" layoutY="54.0" prefHeight="26.0" prefWidth="152.0" promptText="Оцінка" />
-    <Button fx:id="addButton" layoutX="55.0" layoutY="123.0" mnemonicParsing="false" text="Поставити" />
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddMarkSession">
+   <children>
+      <TextField fx:id="markField" layoutX="24.0" layoutY="50.0" prefHeight="26.0" prefWidth="152.0" promptText="Оцінка" />
+      <Button fx:id="addButton" layoutX="61.0" layoutY="128.0" mnemonicParsing="false" style="-fx-background-color: #cc941d;" text="Поставити" />
+   </children>
 </AnchorPane>

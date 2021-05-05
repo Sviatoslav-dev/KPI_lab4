@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LectorerMarks">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LectorerMarks">
    <Button fx:id="Save" layoutX="152.0" layoutY="335.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="306.0" style="-fx-background-color: #cc941d #cc941d;" text="Повернутися назад">
       <font>
-         <Font size="16.0" />
+         <Font size="18.0" />
       </font>
    </Button>
-   <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="610.0" style="-fx-background-color: #127808;">
-      <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
+   <AnchorPane layoutY="-1.0" prefHeight="62.0" prefWidth="610.0" style="-fx-background-color: #127808;">
+      <Label layoutX="21.0" layoutY="8.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
