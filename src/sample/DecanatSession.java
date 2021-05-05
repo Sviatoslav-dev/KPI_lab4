@@ -23,12 +23,16 @@ public class DecanatSession {
     private AnchorPane scrollPane;
 
     @FXML
+    private AnchorPane Pane;
+
+    @FXML
     private TextField NameField;
 
     @FXML
     private Button Search;
 
     public static String name;
+    private boolean deduction;
 
     private ArrayList<Text> names;
     private ArrayList<Text> status;
@@ -38,6 +42,7 @@ public class DecanatSession {
 
     @FXML
     void initialize() {
+        deduction = false;
         Search.setOnAction(event -> input_scrollPane());
 
         goBack.setOnAction(event -> {
@@ -85,11 +90,14 @@ public class DecanatSession {
 
             for (Subject subject : subjects) {
 
-                input_table (size_Y, subject);
+                input_line (size_Y, subject);
 
                 scrollPane.setMinHeight(scrollPane.getMaxHeight() + 50);
                 size_Y += 50;
             }
+
+            if (deduction)
+                crateDeleteButton (st_id);
         }
     }
 
@@ -124,7 +132,7 @@ public class DecanatSession {
         scrollPane.getChildren().add(second_dopka_text);
     }
 
-    void input_table (int size_Y, Subject subject) {
+    void input_line (int size_Y, Subject subject) {
         names.add(new Text());
         names.get(names.size() - 1).setY(size_Y);
         names.get(names.size() - 1).setX(10);
@@ -174,6 +182,7 @@ public class DecanatSession {
         } else if (subject.getSecondAddSession() >= 60) {
             status.get(status.size() - 1).setText("Здав");
         } else {
+            deduction = true;
             status.get(status.size() - 1).setText("Відрахування");
         }
 
@@ -182,6 +191,34 @@ public class DecanatSession {
         scrollPane.getChildren().add(first_dopka.get(first_dopka.size() - 1));
         scrollPane.getChildren().add(second_dopka.get(second_dopka.size() - 1));
         scrollPane.getChildren().add(status.get(status.size() - 1));
+    }
+
+    void crateDeleteButton (int st_id) {
+        Button deleleteBut = new Button();
+        deleleteBut.setText("Видалити акаунт");
+        deleleteBut.setLayoutX(490);
+        deleleteBut.setLayoutY(340);
+
+        deleleteBut.setOnAction(event -> {
+            try {
+                Main.db.DeleteStudent(st_id);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            goBack.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("fxmls/decanat_menu.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
     }
 
     void clear_scrollPane () {

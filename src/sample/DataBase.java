@@ -186,4 +186,23 @@ public class DataBase {
     public void transfer_in_other_group (int st_id, String group) {
         students.get(st_id).setGroup(group);
     }
+
+    public int findAccauntByUsername (String username) {
+        int id = -1;
+
+        for (int i = 0; i < accaunts.size(); i++) {
+            if (accaunts.get(i).getUsername().equals(username)) {
+                id = i;
+            }
+        }
+
+        return id;
+    }
+
+    public void DeleteStudent (int st_id) throws IOException {
+        students.remove(st_id);
+        accaunts.remove(findAccauntByUsername (students.get(st_id).getUsername()));
+        save_students();
+        save_accaunts();
+    }
 }
