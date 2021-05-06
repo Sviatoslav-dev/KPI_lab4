@@ -1,63 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sample.RegisterStudent">
-   <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-               minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
-      <AnchorPane layoutX="-11.0" layoutY="-10.0" prefHeight="76.0" prefWidth="616.0"
-                  style="-fx-background-color: #127808;">
-         <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegisterStudent">
+   <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+      <AnchorPane layoutX="-11.0" layoutY="-10.0" prefHeight="76.0" prefWidth="616.0" style="-fx-background-color: #127808;">
+         <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="DIS" textFill="WHITE">
             <font>
-               <Font size="36.0"/>
+               <Font size="36.0" />
             </font>
          </Label>
       </AnchorPane>
-      <Button fx:id="RegisterButton" layoutX="329.0" layoutY="296.0" mnemonicParsing="false" prefHeight="35.0"
-              prefWidth="186.0" style="-fx-background-color: #cc941d;" text="Зареєструвати">
+      <Button fx:id="RegisterButton" layoutX="329.0" layoutY="296.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="186.0" style="-fx-background-color: #cc941d;" text="Зареєструвати">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="LoginField" layoutX="85.0" layoutY="155.0" prefHeight="35.0" prefWidth="176.0"
-                 promptText="логін">
+      <TextField fx:id="LoginField" layoutX="85.0" layoutY="155.0" prefHeight="35.0" prefWidth="176.0" promptText="логін">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="PasswordField" layoutX="334.0" layoutY="155.0" prefHeight="35.0" prefWidth="176.0"
-                 promptText="пароль">
+      <TextField fx:id="PasswordField" layoutX="334.0" layoutY="155.0" prefHeight="35.0" prefWidth="176.0" promptText="пароль">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="GroupField" layoutX="334.0" layoutY="89.0" prefHeight="35.0" prefWidth="176.0"
-                 promptText="група">
+      <TextField fx:id="GroupField" layoutX="334.0" layoutY="89.0" prefHeight="35.0" prefWidth="176.0" promptText="група">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="NameField" layoutX="85.0" layoutY="89.0" prefHeight="35.0" prefWidth="176.0"
-                 promptText="ім'я">
+      <TextField fx:id="NameField" layoutX="85.0" layoutY="89.0" prefHeight="35.0" prefWidth="176.0" promptText="Прізвище та ім'я">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="SubjectsFild" layoutX="209.0" layoutY="229.0" prefHeight="35.0" prefWidth="176.0"
-                 promptText="Предмети">
+      <TextField fx:id="SubjectsFild" layoutX="114.0" layoutY="229.0" prefHeight="35.0" prefWidth="367.0" promptText="Предмети">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="goBack" layoutX="80.0" layoutY="296.0" mnemonicParsing="false" prefHeight="35.0"
-              prefWidth="186.0" style="-fx-background-color: #cc941d;" text="Повернутися назад">
+      <Button fx:id="goBack" layoutX="80.0" layoutY="296.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="186.0" style="-fx-background-color: #cc941d;" text="Повернутися назад">
          <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
          </font>
       </Button>
    </AnchorPane>

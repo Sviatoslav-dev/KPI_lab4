@@ -11,7 +11,7 @@
     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
         <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0"
                     style="-fx-background-color: #127808;">
-            <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS"
+            <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="DIS"
                    textFill="WHITE">
                 <font>
                     <Font size="36.0"/>

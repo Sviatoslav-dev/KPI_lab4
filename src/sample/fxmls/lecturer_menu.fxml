@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LectorerMenu">
    <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
       <AnchorPane layoutX="-10.0" layoutY="-11.0" prefHeight="77.0" prefWidth="610.0" style="-fx-background-color: #127808;">
-         <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="FICS" textFill="WHITE">
+         <Label layoutX="21.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="DIS" textFill="WHITE">
             <font>
                <Font size="36.0" />
             </font>

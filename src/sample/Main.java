@@ -35,38 +35,42 @@ public class Main extends Application {
         }
         System.out.println();
 
-        for (int i = 0; i < db.students.size(); i++) {
-            System.out.println(db.students.get(i).getUsername());
-            System.out.println(db.students.get(i).getName());
-            System.out.println(db.students.get(i).getGroup());
-            for (int j = 0; j < db.students.get(i).getSubjects().size(); j++) {
-                System.out.print(db.students.get(i).getSubjects().get(j).getName() + ", ");
-                if (db.students.get(i).getSubjects().get(j).getSubjectMarks() != null){
-                    for (int k = 0; k < db.students.get(i).getSubjects().get(j).getSubjectMarks().size(); k++){
-                        System.out.print(db.students.get(i).getSubjects().get(j).getSubjectMarks().get(k) + ", ");
+        if (db.students != null) {
+            for (int i = 0; i < db.students.size(); i++) {
+                System.out.println(db.students.get(i).getUsername());
+                System.out.println(db.students.get(i).getName());
+                System.out.println(db.students.get(i).getGroup());
+                for (int j = 0; j < db.students.get(i).getSubjects().size(); j++) {
+                    System.out.print(db.students.get(i).getSubjects().get(j).getName() + ", ");
+                    if (db.students.get(i).getSubjects().get(j).getSubjectMarks() != null) {
+                        for (int k = 0; k < db.students.get(i).getSubjects().get(j).getSubjectMarks().size(); k++) {
+                            System.out.print(db.students.get(i).getSubjects().get(j).getSubjectMarks().get(k) + ", ");
+                        }
                     }
+
+                    System.out.println();
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+
+        if (db.lecturers != null) {
+            for (int i = 0; i < db.lecturers.size(); i++) {
+                System.out.println(db.lecturers.get(i).getName());
+                System.out.println(db.lecturers.get(i).getUsername());
+                for (int j = 0; j < db.lecturers.get(i).getSubjects().size(); j++) {
+                    System.out.println(db.lecturers.get(i).getSubjects().get(j));
+                }
+
+                for (int j = 0; j < db.lecturers.get(i).getGroups().size(); j++) {
+                    System.out.println(db.lecturers.get(i).getGroups().get(j));
                 }
 
                 System.out.println();
             }
             System.out.println();
         }
-        System.out.println();
-
-        for (int i = 0; i < db.lecturers.size(); i++) {
-            System.out.println(db.lecturers.get(i).getName());
-            System.out.println(db.lecturers.get(i).getUsername());
-            for (int j = 0; j < db.lecturers.get(i).getSubjects().size(); j++) {
-                System.out.println(db.lecturers.get(i).getSubjects().get(j));
-            }
-
-            for (int j = 0; j < db.lecturers.get(i).getGroups().size(); j++) {
-                System.out.println(db.lecturers.get(i).getGroups().get(j));
-            }
-
-            System.out.println();
-        }
-        System.out.println();
     }
 
 

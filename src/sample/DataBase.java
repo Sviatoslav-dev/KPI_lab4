@@ -25,6 +25,7 @@ public class DataBase {
     }
 
     void clearData () throws IOException {
+        accaunts = new ArrayList<>();
         Account decanat = new Account();
         decanat.setPassword("decanat123");
         decanat.setUsername("Decanat");
@@ -76,7 +77,13 @@ public class DataBase {
         st.setUsername(username);
 
         accaunts.add(student);
-        students.add(st);
+
+        if (students != null)
+            students.add(st);
+        else {
+            students = new ArrayList<>();
+            students.add(st);
+        }
     }
 
     public void add_lecturer (String name, String username, String password, ArrayList<String> groups, ArrayList<String> subjects) {
@@ -91,7 +98,12 @@ public class DataBase {
         lec.setSubjects(subjects);
         lec.setUsername(username);
 
-        lecturers.add(lec);
+        if (lecturers != null) {
+            lecturers.add(lec);
+        } else {
+            lecturers = new ArrayList<>();
+            lecturers.add(lec);
+        }
         accaunts.add(acc);
     }
 

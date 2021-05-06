@@ -113,25 +113,25 @@ public class LectorerSession {
     void input_column_names () {
         Text names_text = new Text();
         names_text.setText("Прізвище та імʼя");
-        names_text.setX(35);
+        names_text.setX(10);
         names_text.setY(15);
         names_text.setStroke(Color.BLACK);
 
         Text session_text = new Text();
         session_text.setText("Сесія");
-        session_text.setX(240);
+        session_text.setX(250);
         session_text.setY(15);
         session_text.setStroke(Color.BLACK);
 
         Text first_dopka_text = new Text();
-        first_dopka_text.setText("Перша перездача");
-        first_dopka_text.setX(298);
+        first_dopka_text.setText("  Перша \n перездача");
+        first_dopka_text.setX(330);
         first_dopka_text.setY(15);
         first_dopka_text.setStroke(Color.BLACK);
 
         Text second_dopka_text = new Text();
-        second_dopka_text.setText("Дрyга перездача");
-        second_dopka_text.setX(413);
+        second_dopka_text.setText("  Дрyга \n перездача");
+        second_dopka_text.setX(430);
         second_dopka_text.setY(15);
         second_dopka_text.setStroke(Color.BLACK);
 

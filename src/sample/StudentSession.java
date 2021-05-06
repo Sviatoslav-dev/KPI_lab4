@@ -82,19 +82,19 @@ public class StudentSession {
 
         Text session_text = new Text();
         session_text.setText("Сесія");
-        session_text.setX(139);
+        session_text.setX(230);
         session_text.setY(15);
         session_text.setStroke(Color.BLACK);
 
         Text first_dopka_text = new Text();
-        first_dopka_text.setText("Перша перездача");
-        first_dopka_text.setX(200);
+        first_dopka_text.setText("  Перша \n перездача");
+        first_dopka_text.setX(330);
         first_dopka_text.setY(15);
         first_dopka_text.setStroke(Color.BLACK);
 
         Text second_dopka_text = new Text();
-        second_dopka_text.setText("Дрyга перездача");
-        second_dopka_text.setX(322);
+        second_dopka_text.setText("  Дрyга \n перездача");
+        second_dopka_text.setX(430);
         second_dopka_text.setY(15);
         second_dopka_text.setStroke(Color.BLACK);
 
@@ -113,7 +113,7 @@ public class StudentSession {
 
         main_session.add(new Text());
         main_session.get(main_session.size() - 1).setY(size_Y);
-        main_session.get(main_session.size() - 1).setX(150);
+        main_session.get(main_session.size() - 1).setX(250);
 
         if (subject.getSession()  > 0)
             main_session.get(main_session.size() - 1).setText(Float.toString(subject.getSession()));
@@ -123,7 +123,7 @@ public class StudentSession {
 
         first_dopka.add(new Text());
         first_dopka.get(first_dopka.size() - 1).setY(size_Y);
-        first_dopka.get(first_dopka.size() - 1).setX(250);
+        first_dopka.get(first_dopka.size() - 1).setX(350);
 
         if (subject.getFirstAddSession()  > 0)
             first_dopka.get(first_dopka.size() - 1).setText(Float.toString(subject.getFirstAddSession()));
@@ -133,7 +133,7 @@ public class StudentSession {
 
         second_dopka.add(new Text());
         second_dopka.get(second_dopka.size() - 1).setY(size_Y);
-        second_dopka.get(second_dopka.size() - 1).setX(350);
+        second_dopka.get(second_dopka.size() - 1).setX(450);
 
         if (subject.getSecondAddSession()  > 0)
             second_dopka.get(second_dopka.size() - 1).setText(Float.toString(subject.getSecondAddSession()));

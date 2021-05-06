@@ -93,7 +93,7 @@ public class DecanatSession {
                 input_line (size_Y, subject);
 
                 scrollPane.setMinHeight(scrollPane.getMaxHeight() + 50);
-                size_Y += 50;
+                size_Y += 70;
             }
 
             if (deduction)
@@ -137,6 +137,7 @@ public class DecanatSession {
         names.get(names.size() - 1).setY(size_Y);
         names.get(names.size() - 1).setX(10);
         names.get(names.size() - 1).setText(subject.getName());
+        names.get(names.size() - 1).setWrappingWidth(100);
 
         main_session.add(new Text());
         main_session.get(main_session.size() - 1).setY(size_Y);
