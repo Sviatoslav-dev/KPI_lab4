@@ -21,7 +21,8 @@ public class AddMark {
     void initialize() {
         addButton.setOnAction(event -> {
             float mark = Float.parseFloat(markField.getText());
-            if (mark > 0 && mark <= 100) {
+
+            if (mark > 0 && mark <= 100 && markField.getText().matches("((-|\\\\+)?[0-9]+(\\\\.[0-9]+)?)+")) {
                 Main.db.add_mark(st_id, LectorerMarks.subject, mark);
                 try {
                     Main.db.save_students();

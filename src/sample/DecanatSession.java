@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -68,8 +69,6 @@ public class DecanatSession {
 
         int st_id = Main.db.find_student_by_name(name);
 
-        ArrayList<Subject> subjects = Main.db.students.get(st_id).getSubjects();
-
         if (st_id == -1) {
             Text names_text = new Text();
             names_text.setText("Студента не знайдено");
@@ -77,6 +76,7 @@ public class DecanatSession {
             names_text.setY(15);
             scrollPane.getChildren().add(names_text);
         } else {
+            ArrayList<Subject> subjects = Main.db.students.get(st_id).getSubjects();
 
             input_column_names();
 
@@ -104,7 +104,7 @@ public class DecanatSession {
     void input_column_names () {
         Text names_text = new Text();
         names_text.setText("Предмет");
-        names_text.setX(50);
+        names_text.setX(10);
         names_text.setY(15);
         names_text.setStroke(Color.BLUE);
 
@@ -115,14 +115,14 @@ public class DecanatSession {
         session_text.setStroke(Color.BLUE);
 
         Text first_dopka_text = new Text();
-        first_dopka_text.setText("Перша перездача");
-        first_dopka_text.setX(250);
+        first_dopka_text.setText("  Перша \n перездача");
+        first_dopka_text.setX(230);
         first_dopka_text.setY(15);
         first_dopka_text.setStroke(Color.BLUE);
 
         Text second_dopka_text = new Text();
-        second_dopka_text.setText("Дрyга перездача");
-        second_dopka_text.setX(350);
+        second_dopka_text.setText("  Дрyга \n перездача");
+        second_dopka_text.setX(330);
         second_dopka_text.setY(15);
         second_dopka_text.setStroke(Color.BLUE);
 
@@ -196,7 +196,7 @@ public class DecanatSession {
     void crateDeleteButton (int st_id) {
         Button deleleteBut = new Button();
         deleleteBut.setText("Видалити акаунт");
-        deleleteBut.setLayoutX(490);
+        deleleteBut.setLayoutX(470);
         deleleteBut.setLayoutY(340);
 
         deleleteBut.setOnAction(event -> {
@@ -219,6 +219,8 @@ public class DecanatSession {
             stage.setScene(new Scene(root));
             stage.show();
         });
+
+        Pane.getChildren().add(deleleteBut);
     }
 
     void clear_scrollPane () {

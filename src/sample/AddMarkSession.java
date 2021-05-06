@@ -19,8 +19,10 @@ public class AddMarkSession {
     @FXML
     void initialize() {
         addButton.setOnAction(event -> {
+
             float mark = Float.parseFloat(markField.getText());
-            if (mark > 0 && mark <= 100) {
+
+            if (mark > 0 && mark <= 100 && markField.getText().matches("((-|\\\\+)?[0-9]+(\\\\.[0-9]+)?)+")) {
                 if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getSession() <= 0) {
                     Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).setSession(Float.parseFloat(markField.getText()));
                 } else if (Main.db.students.get(st_id).getSubjects().get(Main.db.subjects_id(st_id, LectorerSession.subject)).getFirstAddSession() <= 0) {
