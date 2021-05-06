@@ -1,5 +1,6 @@
 package sample;
 
+import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -75,6 +76,8 @@ public class DecanatSession {
             names_text.setX(50);
             names_text.setY(15);
             scrollPane.getChildren().add(names_text);
+            Shake SearchAnim = new Shake(Search);
+            SearchAnim.play();
         } else {
             ArrayList<Subject> subjects = Main.db.students.get(st_id).getSubjects();
 

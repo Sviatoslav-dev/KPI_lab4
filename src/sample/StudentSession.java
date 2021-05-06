@@ -142,7 +142,7 @@ public class StudentSession {
 
         status.add(new Text());
         status.get(status.size() - 1).setY(size_Y);
-        status.get(status.size() - 1).setX(450);
+        status.get(status.size() - 1).setX(510);
 
         if (subject.getSession() <= 0) {
             status.get(status.size() - 1).setText("Не здавав");

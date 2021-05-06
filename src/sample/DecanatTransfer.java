@@ -1,5 +1,6 @@
 package sample;
 
+import animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -61,6 +62,8 @@ public class DecanatTransfer {
             text.setX(50);
             text.setY(15);
             pane.getChildren().add(text);
+            Shake SearchAnim = new Shake(Search);
+            SearchAnim.play();
         } else {
             text = new Text();
             text.setText(Main.db.students.get(st_id).getName() + " - " + Main.db.students.get(st_id).getGroup());
